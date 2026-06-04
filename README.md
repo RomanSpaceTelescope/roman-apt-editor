@@ -33,10 +33,8 @@ follows the same column schema.
 ├── Band4hf_CFA.csv
 ├── Band5hf_CFA.csv
 ├── Band6hf_CFA.csv
-├── Pitch-raster5_v2.csv      ← unrelated stray-light pitch raster (not consumed by populate_apt.py)
 ├── RCS-APT-Helper.ipynb      ← exploratory notebook the script grew out of
 ├── apt_editor.ipynb          ← scratch APT XML poking
-└── *.aptbackup               ← auto-saved by APT when it opens a file (gitignored)
 ```
 
 ## Requirements
