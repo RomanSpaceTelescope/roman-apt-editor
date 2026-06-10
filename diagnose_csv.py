@@ -13,7 +13,8 @@ It then computes:
                              this row's pattern)
 - ``LEDFluxSum``           : SRCS_LEDB1_FLUX + SRCS_LEDB2_FLUX
                              (NaN treated as 0 — only one channel may be lit)
-- ``TotalCounts``          : VisitExposureTime_s × LEDFluxSum
+- ``TotalCounts``          : ExposureTime_s × LEDFluxSum  (counts in **one**
+                             exposure — multiply by ``NEXP`` for the row total)
 
 One row per CSV row. Per-visit totals are easy to recompute downstream by
 grouping on ``Visit``; the console summary still prints per-CSV totals.
@@ -114,7 +115,8 @@ def diagnose(csv_path, ma_tables):
             f1 = 0.0 if pd.isna(row['SRCS_LEDB1_FLUX']) else float(row['SRCS_LEDB1_FLUX'])
             f2 = 0.0 if pd.isna(row['SRCS_LEDB2_FLUX']) else float(row['SRCS_LEDB2_FLUX'])
             flux_sum = f1 + f2
-            row_counts = row_exptime * flux_sum
+            # Per-exposure counts only; NEXP-scaled total left to the consumer.
+            row_counts = exptime * flux_sum
 
             rows.append({
                 'Visit': int(visit_num),
@@ -170,10 +172,11 @@ def main():
         diag.to_csv(out_path, index=False)
         n_visits = diag['Visit'].nunique()
         total_time = diag['VisitExposureTime_s'].sum()
-        total_counts = diag['TotalCounts'].sum()
+        # TotalCounts is per-exposure now; scale by NEXP for the rolled-up total.
+        total_counts = (diag['TotalCounts'] * diag['NEXP']).sum()
         print(f'{os.path.basename(csv_path)} → {out_path}: '
               f'{n_visits} visits, {total_time:.1f}s total integration, '
-              f'{total_counts:.3e} total counts (sum of LEDFluxSum × time).')
+              f'{total_counts:.3e} total counts (sum of LEDFluxSum × time × NEXP).')
 
 
 if __name__ == '__main__':

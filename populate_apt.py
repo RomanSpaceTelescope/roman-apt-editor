@@ -1,26 +1,28 @@
-"""Populate a Roman APT seed XML with one PassPlan per TPT review CSV.
+"""Populate a Roman APT seed XML with one PassPlan per TPT review table.
 
-For each CSV (default: every ``Band*_CFA.csv`` next to the seed, in alphabetical
-order), this clones the seed's single ``<PassPlan>`` and fills it with one
-``<Observation>`` per ``VISIT_NUMBER`` group, picking between the seed's two
-templates:
+For each input table (CSV or XLSX; default: every ``Band*_CFA.csv`` next to the
+seed, in alphabetical order), this clones the seed's single ``<PassPlan>`` and
+fills it with one ``<Observation>`` per ``VISIT_NUMBER`` group, picking between
+the seed's two templates:
 
 - the **dark** template (``Calibration/Type = Dark Imaging``) for visits whose
   every row has no LED illumination,
 - the **CRNL Direct Illumination** template for every other visit, with its
   ``<LampState>`` filled in from ``rcs_apt_helper.lampstate_for_visit``.
 
-In addition, each Band 1 CSV is reused to derive Band 2 and Band 3 PassPlans by
-substituting the LED names (``LED11→LED12/LED13`` on channel B1,
-``LED21→LED22/LED23`` on channel B2). All other columns are left as-is.
+When **multiple** Band-keyed CSVs are passed, each ``Band1*_CFA.csv`` is reused
+to derive Band 2 and Band 3 PassPlans by LED-name substitution
+(``LED11→LED12/LED13`` on channel B1, ``LED21→LED22/LED23`` on channel B2).
+A **single-input** run skips that derivation: the table maps to exactly one
+PassPlan.
 
 Each generated PassPlan also gets **three** ``<SurveyPlanStep>`` entries cloned
 from the seed's step (each with a fresh 8-char hex uid).
 
 Usage:
     python populate_apt.py                                    # auto-glob next to seed
-    python populate_apt.py --csv Band1all_CFA.csv Band6hf_CFA.csv
-    python populate_apt.py --seed CFA_seed.apt --out CFA_all_bands.apt
+    python populate_apt.py --input Band1all_CFA.csv Band6hf_CFA.csv
+    python populate_apt.py --input 260605_..._upstep.xlsx --seed tuning_seed.apt --out tuning.apt
 """
 
 import argparse
@@ -31,7 +33,7 @@ import re
 import secrets
 import xml.etree.ElementTree as ET
 
-from rcs_apt_helper import lampstate_for_visit, read_review_csv
+from rcs_apt_helper import lampstate_for_visit, read_review_table
 
 
 NS = 'http://www.stsci.edu/Roman/APT'
@@ -51,8 +53,13 @@ def find_calibration_type(observation):
 
 def lift_observation_templates(passplan):
     """
-    Pull out the dark and calibration ``<Observation>`` templates from a
+    Pull out the dark and lit-calibration ``<Observation>`` templates from a
     PassPlan, then strip every Observation child from it.
+
+    The dark template is identified by ``Calibration/Type = Dark Imaging``;
+    the other Observation in the seed PassPlan is taken as the lit template
+    regardless of its calibration type (e.g. ``CRNL Direct Illumination`` for
+    the CFA seed, ``Internal Flat`` for the tuning seed).
 
     Returns:
     tuple[Element, Element]: (dark_template, calibration_template) — each a
@@ -61,18 +68,16 @@ def lift_observation_templates(passplan):
     dark = calib = None
     for obs in list(passplan.findall(q('Observation'))):
         type_el = find_calibration_type(obs)
-        if type_el is None:
-            continue
-        if type_el.text == 'Dark Imaging':
+        if type_el is not None and type_el.text == 'Dark Imaging':
             dark = copy.deepcopy(obs)
-        elif type_el.text == 'CRNL Direct Illumination':
+        else:
             calib = copy.deepcopy(obs)
         passplan.remove(obs)
 
     if dark is None or calib is None:
         raise RuntimeError(
-            'Seed PassPlan must contain both a "Dark Imaging" and a '
-            '"CRNL Direct Illumination" Observation template.'
+            'Seed PassPlan must contain a "Dark Imaging" Observation template '
+            'and one other Observation template for lit visits.'
         )
     return dark, calib
 
@@ -110,18 +115,18 @@ def lift_surveystep_template(surveyplan):
 DERIVED_BANDS = (2, 3)
 
 
-_LABEL_RE = re.compile(r'^Band(\d+)([A-Za-z]+)_CFA\.csv$')
+_LABEL_RE = re.compile(r'^Band(\d+)([A-Za-z]+)_CFA\.(?:csv|xlsx?|xlsm)$')
 
 
-def label_from_csv(csv_path):
+def label_from_input(input_path):
     """
-    Derive a human-readable PassPlan label from a CSV filename.
+    Derive a human-readable PassPlan label from an input filename.
 
     ``Band1all_CFA.csv`` → ``Band 1 ALL``;
     ``Band6hf_CFA.csv``  → ``Band 6 HF``.
     Falls back to the bare stem when the filename doesn't match the pattern.
     """
-    name = os.path.basename(csv_path)
+    name = os.path.basename(input_path)
     m = _LABEL_RE.match(name)
     if not m:
         return os.path.splitext(name)[0]
@@ -148,22 +153,25 @@ def derive_band(df, source_band, target_band):
     return out
 
 
-def collect_sources(csv_paths):
+def collect_sources(input_paths, sheet=None):
     """
     Build the ordered (label, df) list to feed into ``build_passplan``.
 
-    For every ``Band1*_CFA.csv``, also emit derived ``Band 2``/``Band 3``
-    sources by LED-name substitution. Other bands pass through unchanged.
-    Within each Band 1 input, the derived bands are emitted right after the
-    source so PassPlans read 1, 2, 3 grouped per variant.
+    With **multiple** inputs, every ``Band1*_CFA.*`` is followed by derived
+    ``Band 2``/``Band 3`` sources via LED-name substitution, so PassPlans read
+    1, 2, 3 grouped per variant. A **single-input** run skips that derivation
+    — the table maps 1-to-1 to a single PassPlan, regardless of filename.
     """
     sources = []
-    for csv_path in csv_paths:
-        label = label_from_csv(csv_path)
-        df = read_review_csv(csv_path)
+    derive = len(input_paths) > 1
+    for path in input_paths:
+        label = label_from_input(path)
+        df = read_review_table(path, sheet=sheet)
         sources.append((label, df))
 
-        m = _LABEL_RE.match(os.path.basename(csv_path))
+        if not derive:
+            continue
+        m = _LABEL_RE.match(os.path.basename(path))
         if m and int(m.group(1)) == 1:
             suffix = m.group(2).upper()
             for band in DERIVED_BANDS:
@@ -227,17 +235,19 @@ def build_passplan(template, number, label, df):
     tool_data = passplan.find(q('ToolData'))
     insert_idx = list(passplan).index(tool_data) if tool_data is not None else len(passplan)
 
-    start_next_exp = 0
     n_dark = n_calib = 0
     for _, visit_rows in df.groupby('VISIT_NUMBER', sort=False):
+        # Each new visit is its own APT <Observation> with its own <LampState>;
+        # exposure numbering restarts at 1 every visit, regardless of the
+        # previous visit's cleanup flag. (In the CFA CSVs every visit ends with
+        # CLEANUP=YES so this was already the de-facto behavior; making it
+        # explicit also handles MA-split sub-visits where intermediate
+        # CLEANUP=NO would otherwise chain the counter across observations.)
         if visit_is_dark(visit_rows):
             obs = build_observation(dark_template, visit_rows)
-            # A dark visit has no LEDs on any row, so the helper would reset
-            # the counter to 0 on every row; mirror that here.
-            start_next_exp = 0
             n_dark += 1
         else:
-            lines, start_next_exp = lampstate_for_visit(visit_rows, start_next_exp)
+            lines, _ = lampstate_for_visit(visit_rows, 0)
             obs = build_observation(calib_template, visit_rows,
                                     lampstate_text='\n'.join(lines))
             n_calib += 1
@@ -256,9 +266,9 @@ def build_survey_step(template, passplan_number):
     return step
 
 
-def populate(seed_path, csv_paths, out_path):
-    if not csv_paths:
-        raise ValueError('At least one CSV is required.')
+def populate(seed_path, input_paths, out_path, sheet=None):
+    if not input_paths:
+        raise ValueError('At least one input table is required.')
 
     # Keep the seed's prefix-free element names on the way out.
     ET.register_namespace('', NS)
@@ -274,7 +284,7 @@ def populate(seed_path, csv_paths, out_path):
     pp_template = lift_passplan_template(passplans_container)
     step_template = lift_surveystep_template(surveyplan)
 
-    sources = collect_sources(csv_paths)
+    sources = collect_sources(input_paths, sheet=sheet)
 
     summaries = []
     for i, (label, df) in enumerate(sources, start=1):
@@ -296,7 +306,7 @@ def populate(seed_path, csv_paths, out_path):
     print(f'  Total: {len(summaries)} PassPlans, {total_steps} SurveyPlanSteps.')
 
 
-def default_csv_paths(seed_path):
+def default_input_paths(seed_path):
     """Glob ``Band*_CFA.csv`` from the seed's directory, alphabetically."""
     seed_dir = os.path.dirname(os.path.abspath(seed_path))
     return sorted(glob.glob(os.path.join(seed_dir, 'Band*_CFA.csv')))
@@ -304,20 +314,23 @@ def default_csv_paths(seed_path):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Populate a Roman APT seed XML with one PassPlan per TPT review CSV.',
+        description='Populate a Roman APT seed XML with one PassPlan per TPT review table.',
     )
     parser.add_argument('--seed', default='CFA_seed.apt',
                         help='Path to the seed APT XML file (default: CFA_seed.apt).')
-    parser.add_argument('--csv', nargs='+', default=None,
-                        help='CSV files, in PassPlan order. Defaults to Band*_CFA.csv next to the seed.')
+    parser.add_argument('--input', '--csv', dest='input', nargs='+', default=None,
+                        help='Review tables (CSV or XLSX), in PassPlan order. '
+                             'Defaults to Band*_CFA.csv next to the seed.')
+    parser.add_argument('--sheet', default=None,
+                        help='Sheet name for XLSX inputs (default: "in", or the first sheet).')
     parser.add_argument('--out', default='CFA_all_bands.apt',
                         help='Path to write the populated APT XML (default: CFA_all_bands.apt).')
     args = parser.parse_args()
 
-    csv_paths = args.csv if args.csv else default_csv_paths(args.seed)
-    if not csv_paths:
-        parser.error(f'No CSVs found next to seed {args.seed} matching Band*_CFA.csv.')
-    populate(args.seed, csv_paths, args.out)
+    input_paths = args.input if args.input else default_input_paths(args.seed)
+    if not input_paths:
+        parser.error(f'No inputs supplied and no Band*_CFA.csv found next to seed {args.seed}.')
+    populate(args.seed, input_paths, args.out, sheet=args.sheet)
 
 
 if __name__ == '__main__':

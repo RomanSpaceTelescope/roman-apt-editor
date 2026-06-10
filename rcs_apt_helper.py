@@ -2,9 +2,11 @@
 
 Usage:
     python rcs_apt_helper.py path/to/review.csv
+    python rcs_apt_helper.py path/to/review.xlsx --sheet in
 """
 
 import argparse
+import os
 
 import numpy as np
 import pandas as pd
@@ -110,6 +112,11 @@ def generate_output_flight(Nexp, start_exp=0, nres=None,
     return start_exp + Nexp
 
 
+def _cleanup_fires(value):
+    """Treat ``'YES'`` (case-insensitive) as cleanup; blank/None/``'NO'`` as not."""
+    return value is not None and str(value).strip().upper() == 'YES'
+
+
 def lampstate_for_visit(visit_rows, start_next_exp):
     """
     Build the lines for one APT visit's ``<LampState>`` block.
@@ -117,8 +124,8 @@ def lampstate_for_visit(visit_rows, start_next_exp):
     Iterates the CSV rows belonging to a single visit, emitting per-row
     exposure lines via ``format_flight_lines`` and threading the running
     exposure counter the same way ``process_csv`` does — including resetting
-    to 0 whenever an LED's ``WFI_SRCS_LED*_CLEANUP`` flag fires, and resetting
-    when a row has no LEDs at all.
+    to 0 whenever an LED's ``WFI_SRCS_LED*_CLEANUP`` flag fires (``YES``), and
+    resetting when a row has no LEDs at all.
 
     Parameters:
     visit_rows (pandas.DataFrame): Rows for this visit (already filtered).
@@ -153,29 +160,42 @@ def lampstate_for_visit(visit_rows, start_next_exp):
         current_exp_num = start_next_exp + NEXP
 
         if LEDB1 is not None:
-            if EXTING_LED1 is None:
-                start_next_exp = current_exp_num
-            else:
-                start_next_exp = 0
+            start_next_exp = 0 if _cleanup_fires(EXTING_LED1) else current_exp_num
         if LEDB2 is not None:
-            if EXTING_LED2 is None:
-                start_next_exp = current_exp_num
-            else:
-                start_next_exp = 0
+            start_next_exp = 0 if _cleanup_fires(EXTING_LED2) else current_exp_num
         if LEDB1 is None and LEDB2 is None:
             start_next_exp = 0
 
     return lines, start_next_exp
 
 
-def read_review_csv(file):
-    """Read a TPT review CSV the way ``process_csv`` does, with NaN→None."""
-    df = pd.read_csv(file, na_values=['', ' ', 'NaN', 'nan'])
+_NA_VALUES = ['', ' ', 'NaN', 'nan']
+
+
+def read_review_table(path, sheet=None):
+    """
+    Read a TPT review table from CSV or Excel, with NaN → None.
+
+    For ``.xlsx``/``.xls`` inputs, defaults to a sheet named ``in`` if present,
+    otherwise the first sheet. Pass ``sheet`` to pick a different one.
+    """
+    ext = os.path.splitext(path)[1].lower()
+    if ext in ('.xlsx', '.xls', '.xlsm'):
+        if sheet is None:
+            sheet = 'in' if 'in' in pd.ExcelFile(path).sheet_names else 0
+        df = pd.read_excel(path, sheet_name=sheet, na_values=_NA_VALUES)
+    else:
+        df = pd.read_csv(path, na_values=_NA_VALUES)
     return df.where(pd.notna(df), None)
 
 
-def process_csv(file):
-    df = read_review_csv(file)
+def read_review_csv(file):
+    """Read a TPT review CSV the way ``process_csv`` does, with NaN→None."""
+    return read_review_table(file)
+
+
+def process_csv(file, sheet=None):
+    df = read_review_table(file, sheet=sheet)
 
     # Group rows by visit so we emit one header per visit and bundle all of
     # that visit's activity lines underneath.
@@ -194,11 +214,13 @@ def process_csv(file):
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Generate APT exposure strings from a TPT review CSV.',
+        description='Generate APT exposure strings from a TPT review table (CSV or XLSX).',
     )
-    parser.add_argument('file', help='Path to the TPT review CSV file.')
+    parser.add_argument('file', help='Path to the TPT review table (.csv or .xlsx).')
+    parser.add_argument('--sheet', default=None,
+                        help='For XLSX inputs, the sheet name to read (default: "in", or the first sheet).')
     args = parser.parse_args()
-    process_csv(args.file)
+    process_csv(args.file, sheet=args.sheet)
 
 
 if __name__ == '__main__':

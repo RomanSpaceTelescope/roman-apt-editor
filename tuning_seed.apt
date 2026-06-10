@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RomanProgram schemaVersion="29" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" xmlns="http://www.stsci.edu/Roman/APT">
+    <ProgramInformation>
+        <ProgramPhase>Approved</ProgramPhase>
+        <Title>CAR-206: RCS tuning</Title>
+        <Abstract>TBD</Abstract>
+        <ProgramID>1051</ProgramID>
+        <StsciEditNumber>0</StsciEditNumber>
+        <ProgramCategory>COM</ProgramCategory>
+        <ProgramCategorySubtype>WFI</ProgramCategorySubtype>
+        <AllowRestricted>true</AllowRestricted>
+        <IncludesCalibrations>true</IncludesCalibrations>
+        <PureParallelProgram>false</PureParallelProgram>
+        <Cycle>0</Cycle>
+        <ObservingDescription>TBD</ObservingDescription>
+        <PrincipalInvestigator>
+            <InvestigatorAddress>
+                <UniqueID>24856</UniqueID>
+                <Country>USA</Country>
+                <Institution>NASA Goddard Space Flight Center</Institution>
+                <USState>MD</USState>
+                <ESAMember>false</ESAMember>
+                <CSAMember>false</CSAMember>
+                <FirstName>Maxime</FirstName>
+                <Honorific>Dr.</Honorific>
+                <LastName>Rizzo</LastName>
+                <Retired>false</Retired>
+            </InvestigatorAddress>
+            <Contact>true</Contact>
+        </PrincipalInvestigator>
+    </ProgramInformation>
+    <Targets/>
+    <MosaicPatterns/>
+    <PassPlans>
+        <PassPlan Number="1">
+            <Label>LED11</Label>
+            <TargetSelection>Multiple Fixed Targets</TargetSelection>
+            <ReferenceCoords></ReferenceCoords>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>3</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>10</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Dark Imaging</Type>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>3</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>10</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=22, LED11=6.1
+2, R=22, LED11=6.1
+3, R=22, LED11=6.1</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <ToolData/>
+        </PassPlan>
+    </PassPlans>
+    <SurveyPlan>
+        <Links/>
+        <SurveyPlanStep uid="43fc7bc2">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+    </SurveyPlan>
+    <Activities/>
+    <ExecutionPlans/>
+    <Cycles>
+        <CycleInfo CycleNumber="0" StartDate="2026-06-30 00:00:00" EndDate="2027-04-01 00:00:00" Active="true"/>
+        <CycleInfo CycleNumber="1" StartDate="2026-11-01 00:00:00" EndDate="2029-04-01 00:00:00" Active="true"/>
+    </Cycles>
+    <ProgramHistory>
+        <HistoryEntry Date="Tue Mar 31 18:01:17 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - aarch64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1051.apt"/>
+        <HistoryEntry Date="Tue Mar 31 18:01:38 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - aarch64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1051.apt"/>
+        <HistoryEntry Date="Tue Mar 31 18:01:47 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - aarch64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1051.apt"/>
+        <HistoryEntry Date="Mon Jun 08 18:00:21 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/tuning_seed.apt"/>
+    </ProgramHistory>
+    <ToolData>
+        <ToolData Name="Phase2SubmissionData"/>
+        <ToolData Name="SubmissionData">
+            <ToolValue Name="AssignedID">00000</ToolValue>
+            <ToolValue Name="SubmissionLog">
+Assuming assigned ID: 00000</ToolValue>
+        </ToolData>
+    </ToolData>
+    <Properties/>
+</RomanProgram>

@@ -14,7 +14,20 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
         <IncludesCalibrations>true</IncludesCalibrations>
         <PureParallelProgram>false</PureParallelProgram>
         <Cycle>0</Cycle>
-        <ObservingDescription>TBD</ObservingDescription>
+        <ObservingDescription>Combinatorial Flux Addition (CFA) Program
+
+Primary Goals
+The CFA program is designed to achieve two main objectives:
+- CRNL Characterization: Characterize count-rate dependent nonlinearity (CRNL) using the CFA approach, providing a baseline for comparison against CRNL measurements obtained via the Lamp-on-Lamp-off (LOLO) approach.
+- Verification &amp; Trending: Verify data consistency against ground-based results, including Detector Characterization Lab (DCL) CRNL measurements. Furthermore, initiate on-sky trending to compare current performance with previous SCIPA, WFI, and earlier CFA/RCS tests for the flight detectors.
+
+Methodology
+The test procedure involves collecting a sequence of Wide Field Instrument (WFI) exposures with the dark element in place. During these exposures, the Relative Calibration System (RCS) is operated using pairs of LEDs (bank 1 and bank 2 for a specific band). The system is configured so that the combined fluxes from the LED pairs incrementally increase the total flux throughout the sequence.
+
+Pass Plans &amp; Sequences
+CFA sequences are governed by pass plans established for all bands, and structured as follows:
+- Survey Steps: Each band includes three survey steps, allowing for the repetition of certain calibrations as needed.
+- "ALL" vs. "HF" Plans: Pass plans designated as "ALL" for a given band cover the complete, extended range of fluxes set in the sequence. Because they cover the full range, "ALL" sequences typically take twice as long to execute as the High Flux ("HF") pass plans.</ObservingDescription>
         <PrincipalInvestigator>
             <InvestigatorAddress>
                 <UniqueID>26521</UniqueID>
@@ -154,6 +167,8 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
         <HistoryEntry Date="Thu Jun 04 14:19:19 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt"/>
         <HistoryEntry Date="Thu Jun 04 14:36:22 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt"/>
         <HistoryEntry Date="Thu Jun 04 14:55:06 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt"/>
+        <HistoryEntry Date="Mon Jun 08 19:19:04 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt"/>
+        <HistoryEntry Date="Mon Jun 08 19:21:35 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt"/>
     </ProgramHistory>
     <ToolData>
         <ToolData Name="Phase2SubmissionData"/>
