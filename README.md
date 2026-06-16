@@ -40,16 +40,24 @@ follows the same column schema.
 ## Requirements
 
 - Python ≥ 3.9 (uses `xml.etree.ElementTree.indent`)
-- `pandas`, `numpy`
+- `pandas`, `numpy`, `openpyxl` (for Excel support)
 
 ```bash
-pip install pandas numpy
+pip install pandas numpy openpyxl
 ```
 
-## CSV schema
+## Input formats
 
-`populate_apt.py` and `rcs_apt_helper.py` both consume the TPT review format
-(one row per *activity*, multiple rows per *visit*):
+`populate_apt.py` and `rcs_apt_helper.py` both accept CSV, XLSX, XLS, or XLSM
+files. For Excel files, the script defaults to a sheet named `in` if present,
+otherwise the first sheet (override with `--sheet`). Both tools validate that
+all required columns are present and will report a helpful error if any are
+missing.
+
+### Column schema
+
+Both tools consume the TPT review format (one row per *activity*, multiple rows
+per *visit*):
 
 | Column | Meaning |
 |---|---|
@@ -73,13 +81,20 @@ A visit is treated as **dark** iff every row has both `SRCS_LEDB1` and
 python populate_apt.py
 ```
 
-With no flags this auto-globs `Band*_CFA.csv` next to `CFA_seed.apt`,
-alphabetically, and writes `CFA_all_bands.apt`. Override anything you want:
+With no flags this auto-globs `Band*_CFA.csv` or `Band*_CFA.xlsx` next to
+`CFA_seed.apt`, alphabetically, and writes `CFA_all_bands.apt`. Override
+anything you want:
 
 ```bash
-python populate_apt.py --seed CFA_seed.apt \
-                       --csv Band1all_CFA.csv Band6hf_CFA.csv \
-                       --out CFA_subset.apt
+# Mix CSV and XLSX files
+python populate_apt.py --input Band1all_CFA.csv Band6hf_CFA.xlsx --out CFA_subset.apt
+
+# Use a specific Excel file with a non-default sheet
+python populate_apt.py --input 260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx \
+                       --seed tuning_seed.apt --out tuning.apt
+
+# Specify the sheet name (default: "in", or first sheet)
+python populate_apt.py --input data.xlsx --sheet 'Results' --out output.apt
 ```
 
 #### Band-1 → Band-2 / Band-3 derivation
@@ -96,15 +111,17 @@ If real measured CSVs ever appear for Band 2 / Band 3, drop them in as
 `Band2*_CFA.csv` / `Band3*_CFA.csv` and skip the derivation in
 `collect_sources` for that variant.
 
-### Print LampState lines from a CSV (no XML)
+### Print LampState lines from a CSV or Excel file (no XML)
 
 ```bash
 python rcs_apt_helper.py Band6hf_CFA.csv
+python rcs_apt_helper.py 260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx
+python rcs_apt_helper.py data.xlsx --sheet 'Results'
 ```
 
 Prints `===== Visit N - <MA_TABLE> =====` headers followed by the per-exposure
-APT lines for that visit. Useful for sanity-checking a single CSV before
-running the populator, or for hand-pasting into a single observation in APT.
+APT lines for that visit. Useful for sanity-checking a file before running the
+populator, or for hand-pasting into a single observation in APT.
 
 ## How the seed works
 

@@ -1,16 +1,16 @@
 """Populate a Roman APT seed XML with one PassPlan per TPT review table.
 
-For each input table (CSV or XLSX; default: every ``Band*_CFA.csv`` next to the
-seed, in alphabetical order), this clones the seed's single ``<PassPlan>`` and
-fills it with one ``<Observation>`` per ``VISIT_NUMBER`` group, picking between
-the seed's two templates:
+For each input table (CSV, XLSX, XLS, or XLSM; default: every ``Band*_CFA.*``
+next to the seed, in alphabetical order), this clones the seed's single
+``<PassPlan>`` and fills it with one ``<Observation>`` per ``VISIT_NUMBER``
+group, picking between the seed's two templates:
 
 - the **dark** template (``Calibration/Type = Dark Imaging``) for visits whose
   every row has no LED illumination,
 - the **CRNL Direct Illumination** template for every other visit, with its
   ``<LampState>`` filled in from ``rcs_apt_helper.lampstate_for_visit``.
 
-When **multiple** Band-keyed CSVs are passed, each ``Band1*_CFA.csv`` is reused
+When **multiple** Band-keyed inputs are passed, each ``Band1*_CFA.*`` is reused
 to derive Band 2 and Band 3 PassPlans by LED-name substitution
 (``LED11→LED12/LED13`` on channel B1, ``LED21→LED22/LED23`` on channel B2).
 A **single-input** run skips that derivation: the table maps to exactly one
@@ -21,8 +21,9 @@ from the seed's step (each with a fresh 8-char hex uid).
 
 Usage:
     python populate_apt.py                                    # auto-glob next to seed
-    python populate_apt.py --input Band1all_CFA.csv Band6hf_CFA.csv
-    python populate_apt.py --input 260605_..._upstep.xlsx --seed tuning_seed.apt --out tuning.apt
+    python populate_apt.py --input Band1all_CFA.csv Band6hf_CFA.xlsx
+    python populate_apt.py --input 260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx --seed tuning_seed.apt --out tuning.apt
+    python populate_apt.py --input data.xlsx --sheet 'Results' --seed tuning_seed.apt --out tuning.apt
 """
 
 import argparse
@@ -307,9 +308,28 @@ def populate(seed_path, input_paths, out_path, sheet=None):
 
 
 def default_input_paths(seed_path):
-    """Glob ``Band*_CFA.csv`` from the seed's directory, alphabetically."""
+    """
+    Glob ``Band*_CFA.csv`` or ``Band*_CFA.xlsx`` from the seed's directory,
+    alphabetically. CSVs are preferred if both formats exist for the same band.
+    """
     seed_dir = os.path.dirname(os.path.abspath(seed_path))
-    return sorted(glob.glob(os.path.join(seed_dir, 'Band*_CFA.csv')))
+    # Glob both CSV and XLSX files, sorted by filename
+    all_files = sorted(
+        glob.glob(os.path.join(seed_dir, 'Band*_CFA.csv')) +
+        glob.glob(os.path.join(seed_dir, 'Band*_CFA.xlsx')) +
+        glob.glob(os.path.join(seed_dir, 'Band*_CFA.xls')) +
+        glob.glob(os.path.join(seed_dir, 'Band*_CFA.xlsm'))
+    )
+    # Deduplicate: if both Band1_CFA.csv and Band1_CFA.xlsx exist,
+    # keep only the CSV (prefer CSV order: .csv < .xlsx < .xls < .xlsm alphabetically).
+    seen_bases = {}
+    result = []
+    for path in all_files:
+        base = os.path.splitext(os.path.basename(path))[0]
+        if base not in seen_bases:
+            seen_bases[base] = path
+            result.append(path)
+    return sorted(result)
 
 
 def main():
@@ -319,17 +339,18 @@ def main():
     parser.add_argument('--seed', default='CFA_seed.apt',
                         help='Path to the seed APT XML file (default: CFA_seed.apt).')
     parser.add_argument('--input', '--csv', dest='input', nargs='+', default=None,
-                        help='Review tables (CSV or XLSX), in PassPlan order. '
-                             'Defaults to Band*_CFA.csv next to the seed.')
+                        help='Review tables (CSV, XLSX, XLS, or XLSM), in PassPlan order. '
+                             'Defaults to Band*_CFA.* next to the seed (alphabetically).')
     parser.add_argument('--sheet', default=None,
-                        help='Sheet name for XLSX inputs (default: "in", or the first sheet).')
+                        help='Sheet name for Excel inputs (default: "in", or the first sheet). '
+                             'Ignored for CSV inputs.')
     parser.add_argument('--out', default='CFA_all_bands.apt',
                         help='Path to write the populated APT XML (default: CFA_all_bands.apt).')
     args = parser.parse_args()
 
     input_paths = args.input if args.input else default_input_paths(args.seed)
     if not input_paths:
-        parser.error(f'No inputs supplied and no Band*_CFA.csv found next to seed {args.seed}.')
+        parser.error(f'No inputs supplied and no Band*_CFA.* found next to seed {args.seed}.')
     populate(args.seed, input_paths, args.out, sheet=args.sheet)
 
 

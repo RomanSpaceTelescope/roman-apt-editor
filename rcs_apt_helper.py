@@ -59,6 +59,12 @@ def format_flight_lines(Nexp, start_exp=0, nres=None,
     Returns:
     list[str]: One string per exposure, in order.
     """
+    # Convert NaN to None for LED fields (can occur when reading from pandas DataFrames)
+    if LED1 is not None and isinstance(LED1, float) and np.isnan(LED1):
+        LED1 = None
+    if LED2 is not None and isinstance(LED2, float) and np.isnan(LED2):
+        LED2 = None
+
     lines = []
     for i in range(Nexp):
         fmt = f'{start_exp+i+1}'
@@ -178,14 +184,47 @@ def read_review_table(path, sheet=None):
 
     For ``.xlsx``/``.xls`` inputs, defaults to a sheet named ``in`` if present,
     otherwise the first sheet. Pass ``sheet`` to pick a different one.
+
+    Validates that required columns are present and raises a helpful error if missing.
     """
     ext = os.path.splitext(path)[1].lower()
+
     if ext in ('.xlsx', '.xls', '.xlsm'):
+        try:
+            xls_file = pd.ExcelFile(path)
+        except Exception as e:
+            raise ValueError(f'Failed to read Excel file {path}: {e}')
+
         if sheet is None:
-            sheet = 'in' if 'in' in pd.ExcelFile(path).sheet_names else 0
-        df = pd.read_excel(path, sheet_name=sheet, na_values=_NA_VALUES)
+            sheet = 'in' if 'in' in xls_file.sheet_names else 0
+
+        try:
+            df = pd.read_excel(path, sheet_name=sheet, na_values=_NA_VALUES)
+        except Exception as e:
+            raise ValueError(f'Failed to read sheet {sheet!r} from {path}: {e}')
+    elif ext == '.csv':
+        try:
+            df = pd.read_csv(path, na_values=_NA_VALUES)
+        except Exception as e:
+            raise ValueError(f'Failed to read CSV file {path}: {e}')
     else:
-        df = pd.read_csv(path, na_values=_NA_VALUES)
+        raise ValueError(f'Unsupported file format {ext}. Expected .csv, .xlsx, .xls, or .xlsm')
+
+    # Validate required columns
+    required_cols = {
+        'VISIT_NUMBER', 'NEXP', 'RESULTANTS_PER_EXPOSURE', 'MA_TABLE',
+        'SRCS_LEDB1', 'SRCS_LEDB2', 'SRCS_LEDB1_FLUX', 'SRCS_LEDB2_FLUX',
+        'SRCS_LEDB1_PRECHARGE_DURATION', 'SRCS_LEDB1_PRECHARGE_FLUX',
+        'SRCS_LEDB2_PRECHARGE_DURATION', 'SRCS_LEDB2_PRECHARGE_FLUX',
+        'WFI_SRCS_LEDB1_CLEANUP', 'WFI_SRCS_LEDB2_CLEANUP',
+    }
+    missing = required_cols - set(df.columns)
+    if missing:
+        raise ValueError(
+            f'Missing required columns in {path}: {sorted(missing)}. '
+            f'Expected: {sorted(required_cols)}. Got: {sorted(df.columns)}'
+        )
+
     return df.where(pd.notna(df), None)
 
 
