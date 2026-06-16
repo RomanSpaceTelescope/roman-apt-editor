@@ -53,13 +53,27 @@ Generates:
 
 ## Precharge Calculation
 
+Use the precharge calculator from [roman-rcs-tools](https://github.com/RomanSpaceTelescope/roman-rcs-tools):
+
 ```bash
-cd ../roman-rcs-tools
 python precharge_calculator.py --led LED16 --target-flux 500.0 --duration 30
 ```
 
+Output is the precharge flux value to use in the spreadsheet.
+
 ## Examples
 
+### CFA (Count-Rate Dependent Flat Analysis)
+- `CFA_seed.apt` — Seed file
+- `CFA_all_bands.apt` — Example output with all bands configured
+- `260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx` — Flight tuning data example
+
+### Tuning
+- `tuning_seed.apt` — Seed file
+- `260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx` — Flight tuning data example
+
+### LOLO (Lamp-On-Lamp-Off Calibration)
+- `LOLO_seed.apt` — Seed file
 - `lolo_input_example.csv` — Basic LOLO example
 - `lolo_input_MRT12c.csv` — MRT 12c with LED12/F087 and LED16/F184
 
