@@ -3,7 +3,7 @@
 Input is a review table (CSV/XLSX) with columns:
 - PASSPLAN_LABEL: PassPlan label grouping
 - OBSERVATION_NUMBER: Observation sequence within PassPlan
-- OBSERVATION_TYPE: "dark", "lit", or "crnl"
+- OBSERVATION_TYPE: "dark", "sky", or "lolo"
 - TARGET: Target number or "NONE"
 - OPTICAL_ELEMENT: Filter name (e.g., "F087", "DARK")
 - FIDUCIAL_APERTURE: Aperture name (e.g., "WFI01_FULL") or empty
@@ -45,36 +45,36 @@ def find_calibration_type(observation):
 
 def lift_observation_templates_lolo(passplan):
     """
-    Pull out dark, lit, and CRNL observation templates from a PassPlan,
+    Pull out dark, sky, and lolo observation templates from a PassPlan,
     then strip every Observation child from it.
 
     Expects exactly 3 observations:
     - Dark: Calibration/Type = "Dark Imaging"
-    - Lit: no Calibration element
-    - CRNL: Calibration/Type contains "CRNL" or "LOLO"
+    - Sky: no Calibration element
+    - Lolo: Calibration/Type contains "CRNL" or "LOLO"
 
     Returns:
-    tuple[Element, Element, Element]: (dark_template, lit_template, crnl_template)
+    tuple[Element, Element, Element]: (dark_template, sky_template, lolo_template)
     """
-    dark = lit = crnl = None
+    dark = sky = lolo = None
     for obs in list(passplan.findall(q('Observation'))):
         type_el = find_calibration_type(obs)
         if type_el is not None:
             if type_el.text == 'Dark Imaging':
                 dark = copy.deepcopy(obs)
             elif 'CRNL' in type_el.text or 'LOLO' in type_el.text:
-                crnl = copy.deepcopy(obs)
+                lolo = copy.deepcopy(obs)
         else:
-            # No calibration type => lit observation
-            lit = copy.deepcopy(obs)
+            # No calibration type => sky observation
+            sky = copy.deepcopy(obs)
         passplan.remove(obs)
 
-    if dark is None or lit is None or crnl is None:
+    if dark is None or sky is None or lolo is None:
         raise RuntimeError(
             'Seed PassPlan must contain exactly 3 Observation templates: '
-            '"Dark Imaging", a lit observation (no Calibration), and a CRNL/LOLO observation.'
+            '"Dark Imaging", a sky observation (no Calibration), and a LOLO observation.'
         )
-    return dark, lit, crnl
+    return dark, sky, lolo
 
 
 def lift_passplan_template(passplans_container):
@@ -123,21 +123,21 @@ def read_lolo_table(path, sheet=None):
 
 
 def build_observation_lolo(obs_type, target, optical_element, obs_rows,
-                           dark_template, lit_template, crnl_template,
+                           dark_template, sky_template, lolo_template,
                            fiducial_aperture=None):
     """
     Build a LOLO observation from the appropriate template and row data.
 
     Fills in Target, OpticalElement, NumberOfExposures, MultiAccumTable, Resultant.
-    For CRNL, generates LampState from obs_rows via lampstate_for_visit.
+    For lolo, generates LampState from obs_rows via lampstate_for_visit.
     Adds FiducialPointOverride if fiducial_aperture is specified.
 
     Parameters:
-    obs_type (str): "dark", "lit", or "crnl"
+    obs_type (str): "dark", "sky", or "lolo"
     target (str): Target number or "NONE"
     optical_element (str): Filter name
-    obs_rows (pd.DataFrame): Rows for this observation (1+ rows for CRNL, 1 for dark/lit)
-    dark_template, lit_template, crnl_template (Element): Observation templates
+    obs_rows (pd.DataFrame): Rows for this observation (1+ rows for lolo, 1 for dark/sky)
+    dark_template, sky_template, lolo_template (Element): Observation templates
     fiducial_aperture (str, optional): Aperture name or None
 
     Returns:
@@ -147,10 +147,10 @@ def build_observation_lolo(obs_type, target, optical_element, obs_rows,
 
     if obs_type == 'dark':
         obs = copy.deepcopy(dark_template)
-    elif obs_type == 'lit':
-        obs = copy.deepcopy(lit_template)
-    elif obs_type == 'crnl':
-        obs = copy.deepcopy(crnl_template)
+    elif obs_type == 'sky':
+        obs = copy.deepcopy(sky_template)
+    elif obs_type == 'lolo':
+        obs = copy.deepcopy(lolo_template)
     else:
         raise ValueError(f'Unknown observation type: {obs_type}')
 
@@ -180,8 +180,8 @@ def build_observation_lolo(obs_type, target, optical_element, obs_rows,
     if res_el is not None:
         res_el.text = str(int(first_row['RESULTANTS_PER_EXPOSURE']))
 
-    # Generate LampState for CRNL observations
-    if obs_type == 'crnl':
+    # Generate LampState for lolo observations
+    if obs_type == 'lolo':
         lines, _ = lampstate_for_visit(obs_rows, start_next_exp=0)
         lamp_el = obs.find(f'{q("SpecialRequirements")}/{q("Calibration")}/{q("LampState")}')
         if lamp_el is not None:
@@ -210,7 +210,7 @@ def build_observation_lolo(obs_type, target, optical_element, obs_rows,
 
 
 def build_passplan_lolo(pp_template, pp_number, pp_label, pp_df,
-                        dark_template, lit_template, crnl_template):
+                        dark_template, sky_template, lolo_template):
     """
     Build a LOLO PassPlan from grouped rows.
 
@@ -218,7 +218,7 @@ def build_passplan_lolo(pp_template, pp_number, pp_label, pp_df,
     observation per group, and inserts into the PassPlan.
 
     Returns:
-    tuple[Element, int, int, int]: (passplan, n_dark, n_lit, n_crnl)
+    tuple[Element, int, int, int]: (passplan, n_dark, n_sky, n_lolo)
     """
     passplan = copy.deepcopy(pp_template)
     passplan.set('Number', str(pp_number))
@@ -233,7 +233,7 @@ def build_passplan_lolo(pp_template, pp_number, pp_label, pp_df,
     tool_data = passplan.find(q('ToolData'))
     insert_idx = list(passplan).index(tool_data) if tool_data is not None else len(passplan)
 
-    n_dark = n_lit = n_crnl = 0
+    n_dark = n_sky = n_lolo = 0
 
     # Group by OBSERVATION_NUMBER, sort by that number
     for obs_num in sorted(pp_df['OBSERVATION_NUMBER'].unique()):
@@ -256,8 +256,8 @@ def build_passplan_lolo(pp_template, pp_number, pp_label, pp_df,
             optical_element=optical_elem,
             obs_rows=obs_rows,
             dark_template=dark_template,
-            lit_template=lit_template,
-            crnl_template=crnl_template,
+            sky_template=sky_template,
+            lolo_template=lolo_template,
             fiducial_aperture=fiducial_ap,
         )
 
@@ -267,12 +267,12 @@ def build_passplan_lolo(pp_template, pp_number, pp_label, pp_df,
         obs_type_lower = obs_type.lower().strip()
         if obs_type_lower == 'dark':
             n_dark += 1
-        elif obs_type_lower == 'lit':
-            n_lit += 1
-        elif obs_type_lower == 'crnl':
-            n_crnl += 1
+        elif obs_type_lower == 'sky':
+            n_sky += 1
+        elif obs_type_lower == 'lolo':
+            n_lolo += 1
 
-    return passplan, n_dark, n_lit, n_crnl
+    return passplan, n_dark, n_sky, n_lolo
 
 
 def build_survey_step(template, passplan_number):
@@ -297,31 +297,30 @@ def populate_lolo(seed_path, input_path, out_path, sheet=None):
 
     pp_template = lift_passplan_template(passplans_container)
     step_template = lift_surveystep_template(surveyplan)
-    dark_template, lit_template, crnl_template = lift_observation_templates_lolo(pp_template)
+    dark_template, sky_template, lolo_template = lift_observation_templates_lolo(pp_template)
 
     df = read_lolo_table(input_path, sheet=sheet)
 
     summaries = []
     for pp_num, pp_label in enumerate(df['PASSPLAN_LABEL'].unique(), start=1):
         pp_df = df[df['PASSPLAN_LABEL'] == pp_label]
-        passplan, n_dark, n_lit, n_crnl = build_passplan_lolo(
+        passplan, n_dark, n_sky, n_lolo = build_passplan_lolo(
             pp_template, pp_num, pp_label, pp_df,
-            dark_template, lit_template, crnl_template
+            dark_template, sky_template, lolo_template
         )
         passplans_container.append(passplan)
-        for _ in range(3):
-            surveyplan.append(build_survey_step(step_template, pp_num))
-        summaries.append((pp_num, pp_label, n_dark, n_lit, n_crnl))
+        surveyplan.append(build_survey_step(step_template, pp_num))
+        summaries.append((pp_num, pp_label, n_dark, n_sky, n_lolo))
 
     ET.indent(tree, space='    ')
     tree.write(out_path, xml_declaration=True, encoding='UTF-8')
 
     print(f'Wrote {out_path}:')
-    for pp_num, pp_label, n_dark, n_lit, n_crnl in summaries:
-        total_obs = n_dark + n_lit + n_crnl
+    for pp_num, pp_label, n_dark, n_sky, n_lolo in summaries:
+        total_obs = n_dark + n_sky + n_lolo
         print(f'  PassPlan {pp_num} "{pp_label}": '
-              f'{n_dark} dark + {n_lit} lit + {n_crnl} crnl = {total_obs} obs + 3 survey steps')
-    total_steps = 3 * len(summaries)
+              f'{n_dark} dark + {n_sky} sky + {n_lolo} lolo = {total_obs} obs + 1 survey step')
+    total_steps = len(summaries)
     print(f'  Total: {len(summaries)} PassPlans, {total_steps} SurveyPlanSteps.')
 
 
