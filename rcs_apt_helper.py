@@ -175,6 +175,60 @@ def lampstate_for_visit(visit_rows, start_next_exp):
     return lines, start_next_exp
 
 
+def compute_sweep_precharge(full_precharge_fluxes, full_precharge_times):
+    """
+    Convert from-dark precharge (flux, time) pairs for a flux sweep into incremental values.
+
+    For a sweep where the LED is NOT turned off between steps (e.g. 2→20→200→500),
+    the LED already holds the previous equilibrium charge; only the incremental
+    charge is needed at each step.
+
+    Two cases:
+    - Normal: precharge_flux(N) > precharge_flux(N-1)
+        → incremental_flux = flux(N) - flux(N-1), time unchanged
+    - Saturated: precharge_flux(N) == precharge_flux(N-1) (LED at max current)
+        → incremental_time = time(N) - time(N-1), flux unchanged
+
+    Parameters:
+    full_precharge_fluxes (list[float | None]): From-dark precharge flux per step.
+    full_precharge_times  (list[float | None]): From-dark precharge time per step.
+
+    Returns:
+    tuple[list[float | None], list[float | None]]: (incremental_fluxes, incremental_times)
+    """
+    def _is_nan(v):
+        return v is None or (isinstance(v, float) and np.isnan(v))
+
+    out_fluxes = []
+    out_times = []
+    for i in range(len(full_precharge_fluxes)):
+        flux = full_precharge_fluxes[i]
+        time = full_precharge_times[i]
+        if _is_nan(flux):
+            out_fluxes.append(None)
+            out_times.append(None)
+            continue
+        if i == 0 or _is_nan(full_precharge_fluxes[i - 1]):
+            out_fluxes.append(flux)
+            out_times.append(time)
+        elif flux == full_precharge_fluxes[i - 1]:
+            # Saturated: flux capped, subtract times
+            out_fluxes.append(flux)
+            out_times.append(round(time - full_precharge_times[i - 1], 1))
+        else:
+            # Normal: subtract fluxes, keep time
+            out_fluxes.append(round(flux - full_precharge_fluxes[i - 1], 1))
+            out_times.append(time)
+    return out_fluxes, out_times
+
+
+def compute_sweep_precharge_fluxes(full_precharge_fluxes):
+    """Flux-only wrapper around compute_sweep_precharge for backwards compatibility."""
+    dummy_times = [30.0] * len(full_precharge_fluxes)
+    fluxes, _ = compute_sweep_precharge(full_precharge_fluxes, dummy_times)
+    return fluxes
+
+
 _NA_VALUES = ['', ' ', 'NaN', 'nan']
 
 
