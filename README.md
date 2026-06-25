@@ -2,18 +2,73 @@
 
 Generate Roman APT observation files from spreadsheets.
 
+## Tools
+
+All core tools are in the `tools/` folder:
+
+### populate_apt.py
+Populate a Roman APT seed XML with CFA (count-rate dependent flat analysis) or tuning observations. Clones the seed's PassPlan once per input table, with one Observation per VISIT_NUMBER group. Supports multi-band input with automatic LED substitution (Band1→Band2/Band3).
+
+```bash
+python tools/populate_apt.py --seed seeds/CFA_seed.apt --input data.csv --out output.apt
+python tools/populate_apt.py --input data.xlsx --sheet 'Results' --seed seeds/tuning_seed.apt --out tuning.apt
+```
+
+### populate_lolo_apt.py
+Populate a Roman APT seed XML for LOLO (lamp-on-lamp-off) observations with target and fiducial overrides. Supports grouping multiple rows into multi-LED CRNL observations by (PASSPLAN_LABEL, OBSERVATION_NUMBER).
+
+```bash
+python tools/populate_lolo_apt.py --seed seeds/LOLO_seed.apt --input lolo_data.csv --out lolo.apt
+```
+
+### generate_gopup.py
+Generate a Roman WFI OPUP (Observation Plan Upload Package) as a `.tgz` tarball from a CFA or LOLO CSV. Merges rows by VISIT_NUMBER and generates OPS/VST files with proper directory structure.
+
+```bash
+python tools/generate_gopup.py --csv data.csv --opup_name 2026334010112_2026169141359 \
+  --prog 123 --exec 1 --pass_num 1 --seg 1
+```
+
+### rcs_apt_helper.py
+Helper library for constructing APT strings from TPT review CSVs. Provides utilities for reading review tables, generating LampState strings, and formatting output. Used by populate_apt.py and populate_lolo_apt.py.
+
+### diagnose_csv.py
+Diagnostic tool that correlates a TPT review CSV with the MA-table reference YAML to compute timing and count diagnostics. Outputs effective exposure time, read patterns, and total counts per row.
+
+```bash
+python tools/diagnose_csv.py --csv data.csv --yaml reference/ma_table_ref_revG.yaml
+```
+
 ## Quick Start
 
 ```bash
 # CFA observations (count-rate dependent flat analysis)
-python populate_apt.py --seed CFA_seed.apt --input data.csv --out output.apt
+python tools/populate_apt.py --seed seeds/CFA_seed.apt --input examples/cfa/data.csv --out output.apt
 
 # LOLO observations (lamp-on-lamp-off calibration)
-python populate_lolo_apt.py --seed LOLO_seed.apt --input data.csv --out output.apt
+python tools/populate_lolo_apt.py --seed seeds/LOLO_seed.apt --input examples/lolo/data.csv --out output.apt
 
 # With Excel sheet selection
-python populate_apt.py --seed tuning_seed.apt --input 260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx --out output.apt
+python tools/populate_apt.py --seed seeds/tuning_seed.apt --input examples/tuning/260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx --out output.apt
 
+```
+
+## Folder Structure
+
+```
+tools/              Core APT population and diagnostic scripts
+seeds/              Seed APT template files (.apt)
+examples/           Example inputs and outputs
+  ├── cfa/          CFA example data and outputs
+  ├── lolo/         LOLO example data and outputs
+  └── tuning/       Tuning example data and outputs
+reference/          Documentation and reference data
+  ├── ma_table_ref_revG.yaml        Multi-accumulate table reference
+  └── sRCS_precharge_explainer.html Precharge calculation explanation
+data/               CSV diagnostic and test files
+notebooks/          Jupyter notebooks for analysis and exploration
+helpers/            Experimental utilities (not maintained)
+backups/            APT backup files (.aptbackup)
 ```
 
 ## Input Columns
@@ -54,29 +109,32 @@ Generates:
 
 ## Precharge Calculation
 
-Use the precharge calculator from [roman-rcs-tools](https://github.com/RomanSpaceTelescope/roman-rcs-tools):
+Use the precharge calculator from `../roman-rcs-tools/`:
 
 ```bash
-python precharge_calculator.py --led LED16 --target-flux 500.0 --duration 30
+precharge-calculator --side B --target-flux 500 --duration 30
 ```
 
-Output is the precharge flux value to use in the spreadsheet.
+The output is the precharge flux value to use in the CSV/spreadsheet columns `SRCS_LEDB*_PRECHARGE_FLUX`.
 
 ## Examples
 
-### CFA (Count-Rate Dependent Flat Analysis)
-- `CFA_seed.apt` — Seed file
-- `CFA_all_bands.apt` — Example output with all bands configured
-- `260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx` — Flight tuning data example
+See `examples/` folder for input data and outputs:
 
-### Tuning
-- `tuning_seed.apt` — Seed file
-- `260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx` — Flight tuning data example
+### CFA (Count-Rate Dependent Flat Analysis)
+- `examples/cfa/260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx` — Flight tuning input
+- `examples/cfa/CFA_all_bands.apt` — Example output with all bands
+- `examples/cfa/CFA_ladder_stacked.png` — CFA ladder visualization
 
 ### LOLO (Lamp-On-Lamp-Off Calibration)
-- `LOLO_seed.apt` — Seed file
-- `lolo_input_example.csv` — Basic LOLO example
-- `lolo_input_MRT12c.csv` — MRT 12c with LED12/F087 and LED16/F184
+- `examples/lolo/lolo_input_example.csv` — Basic LOLO example
+- `examples/lolo/lolo_input_MRT12c.csv` — MRT 12c example
+- `examples/lolo/lolo_MRT12c.apt` — Example LOLO output
+- `examples/lolo/APT_1024_LOLO.csv` — APT 1024 LOLO input
+
+### Tuning
+- `examples/tuning/260605_sRCS_WFI_flight_tuning_2hr_APT_upstep.xlsx` — Flight tuning input
+- `examples/tuning/tuning.apt` — Example tuning output
 
 ## Requirements
 
