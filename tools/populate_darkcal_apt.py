@@ -1,4 +1,4 @@
-"""Populate a Roman APT seed XML with one PassPlan per TPT review table.
+"""Populate a Roman APT seed XML with one PassPlan per dark/cal review table.
 
 For each input table (CSV, XLSX, XLS, or XLSM; default: every ``Band*_CFA.*``
 next to the seed, in alphabetical order), this clones the seed's single
@@ -20,10 +20,10 @@ Each generated PassPlan also gets **three** ``<SurveyPlanStep>`` entries cloned
 from the seed's step (each with a fresh 8-char hex uid).
 
 Usage:
-    python populate_apt.py                                    # auto-glob next to seed
-    python populate_apt.py --input Band1all_CFA.csv Band6hf_CFA.xlsx
-    python populate_apt.py --input 260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx --seed tuning_seed.apt --out tuning.apt
-    python populate_apt.py --input data.xlsx --sheet 'Results' --seed tuning_seed.apt --out tuning.apt
+    python populate_darkcal_apt.py                                    # auto-glob next to seed
+    python populate_darkcal_apt.py --input Band1all_CFA.csv Band6hf_CFA.xlsx
+    python populate_darkcal_apt.py --input 260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx --seed tuning_seed.apt --out tuning.apt
+    python populate_darkcal_apt.py --input data.xlsx --sheet 'Results' --seed tuning_seed.apt --out tuning.apt
 """
 
 import argparse

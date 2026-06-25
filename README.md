@@ -6,12 +6,12 @@ Generate Roman APT observation files from spreadsheets.
 
 All core tools are in the `tools/` folder:
 
-### populate_apt.py
-Populate a Roman APT seed XML with CFA (count-rate dependent flat analysis) or tuning observations. Clones the seed's PassPlan once per input table, with one Observation per VISIT_NUMBER group. Supports multi-band input with automatic LED substitution (Band1→Band2/Band3).
+### populate_darkcal_apt.py
+Populate a Roman APT seed XML with dark/cal observations (CFA, flat, dark, tuning). Clones the seed's PassPlan once per input table, with one Observation per VISIT_NUMBER group. Supports multi-band input with automatic LED substitution (Band1→Band2/Band3).
 
 ```bash
-python tools/populate_apt.py --seed seeds/CFA_seed.apt --input data.csv --out output.apt
-python tools/populate_apt.py --input data.xlsx --sheet 'Results' --seed seeds/tuning_seed.apt --out tuning.apt
+python tools/populate_darkcal_apt.py --seed seeds/CFA_seed.apt --input data.csv --out output.apt
+python tools/populate_darkcal_apt.py --input data.xlsx --sheet 'Results' --seed seeds/tuning_seed.apt --out tuning.apt
 ```
 
 ### populate_lolo_apt.py
@@ -42,14 +42,14 @@ python tools/diagnose_csv.py --csv data.csv --yaml reference/ma_table_ref_revG.y
 ## Quick Start
 
 ```bash
-# CFA observations (count-rate dependent flat analysis)
-python tools/populate_apt.py --seed seeds/CFA_seed.apt --input examples/cfa/data.csv --out output.apt
+# Dark/cal observations (CFA, flat, dark, tuning)
+python tools/populate_darkcal_apt.py --seed seeds/CFA_seed.apt --input examples/cfa/data.csv --out output.apt
 
 # LOLO observations (lamp-on-lamp-off calibration)
 python tools/populate_lolo_apt.py --seed seeds/LOLO_seed.apt --input examples/lolo/data.csv --out output.apt
 
 # With Excel sheet selection
-python tools/populate_apt.py --seed seeds/tuning_seed.apt --input examples/tuning/260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx --out output.apt
+python tools/populate_darkcal_apt.py --seed seeds/tuning_seed.apt --input examples/tuning/260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx --out output.apt
 
 ```
 
