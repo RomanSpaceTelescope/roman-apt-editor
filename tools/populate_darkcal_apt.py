@@ -34,7 +34,7 @@ import re
 import secrets
 import xml.etree.ElementTree as ET
 
-from rcs_apt_helper import lampstate_for_visit, read_review_table
+from helpers.rcs_apt_helper import lampstate_for_visit, read_review_table
 
 
 NS = 'http://www.stsci.edu/Roman/APT'

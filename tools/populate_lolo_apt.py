@@ -27,7 +27,7 @@ import xml.etree.ElementTree as ET
 
 import pandas as pd
 
-from rcs_apt_helper import read_review_table, lampstate_for_visit
+from helpers.rcs_apt_helper import read_review_table, lampstate_for_visit
 
 
 NS = 'http://www.stsci.edu/Roman/APT'

@@ -36,7 +36,7 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from rcs_apt_helper import read_review_csv
+from helpers.rcs_apt_helper import read_review_csv
 
 
 def load_ma_tables(yaml_path):
