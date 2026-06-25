@@ -1,0 +1,696 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<RomanProgram xmlns="http://www.stsci.edu/Roman/APT" schemaVersion="29" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002">
+    <ProgramInformation>
+        <ProgramPhase>Approved</ProgramPhase>
+        <Title>CAR-206: RCS tuning</Title>
+        <Abstract>TBD</Abstract>
+        <ProgramID>1051</ProgramID>
+        <StsciEditNumber>0</StsciEditNumber>
+        <ProgramCategory>COM</ProgramCategory>
+        <ProgramCategorySubtype>WFI</ProgramCategorySubtype>
+        <AllowRestricted>true</AllowRestricted>
+        <IncludesCalibrations>true</IncludesCalibrations>
+        <PureParallelProgram>false</PureParallelProgram>
+        <Cycle>0</Cycle>
+        <ObservingDescription>TBD</ObservingDescription>
+        <PrincipalInvestigator>
+            <InvestigatorAddress>
+                <UniqueID>24856</UniqueID>
+                <Country>USA</Country>
+                <Institution>NASA Goddard Space Flight Center</Institution>
+                <USState>MD</USState>
+                <ESAMember>false</ESAMember>
+                <CSAMember>false</CSAMember>
+                <FirstName>Maxime</FirstName>
+                <Honorific>Dr.</Honorific>
+                <LastName>Rizzo</LastName>
+                <Retired>false</Retired>
+            </InvestigatorAddress>
+            <Contact>true</Contact>
+        </PrincipalInvestigator>
+    </ProgramInformation>
+    <Targets />
+    <MosaicPatterns />
+    <PassPlans>
+        <PassPlan Number="1">
+            <Label>260605_sRCS_WFI_flight_tuning_2hr_APT_upstep_proposed</Label>
+            <TargetSelection>Multiple Fixed Targets</TargetSelection>
+            <ReferenceCoords />
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>3</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>7</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Dark Imaging</Type>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>3</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>11</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=11, LED11=3.2
+2, R=11, LED11=13.8
+3, R=7, LED11=58.5</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
+                <Resultant>7</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=7, LED11=81.2</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>3</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=3, LED11=8888.9</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>3</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>11</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=11, LED21=3.3
+2, R=11, LED21=14.0
+3, R=6, LED21=59.4</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=6, LED21=93.8</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>3</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=3, LED21=8888.9</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>11</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=11, LED12=5.8
+2, R=11, LED12=24.8</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=6, LED12=105.3</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>7</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=7, LED12=146.2
+2, R=3, LED12=8888.9</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>11</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=11, LED22=6.2
+2, R=11, LED22=26.3</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
+                <Resultant>5</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=5, LED22=111.6</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>7</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=7, LED22=155.0
+2, R=3, LED22=8888.9</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>11</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=11, LED13=6.2
+2, R=11, LED13=26.5</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
+                <Resultant>5</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=5, LED13=112.5</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>7</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=7, LED13=156.2
+2, R=3, LED13=8888.9</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>11</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=11, LED23=6.4
+2, R=11, LED23=27.4</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
+                <Resultant>5</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=5, LED23=116.1</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=6, LED23=186.2
+2, R=3, LED23=8888.9</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>11</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=11, LED14=4.8 (pre=30,967.8)
+2, R=11, LED14=20.2 (pre=30,2940.6)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=6, LED14=85.5 (pre=30,7347.6)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=6, LED14=167.5 (pre=30,10379.8)
+2, R=3, LED14=8888.9 (pre=439,43702.1)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>11</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=11, LED24=4.8 (pre=30,1121.1)
+2, R=11, LED24=20.4 (pre=30,3448.4)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=6, LED24=86.4 (pre=30,8152.8)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>5</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=5, LED24=210.0 (pre=30,12801.7)
+2, R=3, LED24=8888.9 (pre=439,43638.0)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>11</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=11, LED15=5.6 (pre=30,497.1)
+2, R=11, LED15=23.5 (pre=30,1367.2)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=6, LED15=99.9 (pre=30,3697.0)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>4</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=4, LED15=251.2 (pre=30,6434.1)
+2, R=3, LED15=8888.9 (pre=299,38248.9)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>11</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=11, LED25=5.6 (pre=30,539.2)
+2, R=11, LED25=23.8 (pre=30,1506.6)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=6, LED25=100.8 (pre=30,4013.3)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>4</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=4, LED25=291.2 (pre=30,7675.6)
+2, R=3, LED25=8888.9 (pre=302,37813.0)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>11</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=11, LED16=5.7 (pre=30,427.3)
+2, R=11, LED16=24.2 (pre=30,1115.4)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=6, LED16=102.6 (pre=30,2852.7)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>5</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=5, LED16=242.5 (pre=30,5043.2)
+2, R=3, LED16=8888.9 (pre=242,37735.2)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>11</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=11, LED26=5.8 (pre=30,467.7)
+2, R=11, LED26=24.4 (pre=30,1245.7)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=6, LED26=103.5 (pre=30,3122.4)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>2</NumberOfExposures>
+                <MultiAccumTable>IM_DIAGNOSTIC</MultiAccumTable>
+                <Resultant>4</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, R=4, LED26=268.8 (pre=30,5966.1)
+2, R=3, LED26=8888.9 (pre=243,37620.3)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <ToolData />
+        </PassPlan>
+    </PassPlans>
+    <SurveyPlan>
+        <Links />
+        <SurveyPlanStep uid="cce9ad5b">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements />
+            <ToolData />
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="3ddb7187">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements />
+            <ToolData />
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="a5600d1d">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements />
+            <ToolData />
+        </SurveyPlanStep>
+    </SurveyPlan>
+    <Activities />
+    <ExecutionPlans />
+    <Cycles>
+        <CycleInfo CycleNumber="0" StartDate="2026-06-30 00:00:00" EndDate="2027-04-01 00:00:00" Active="true" />
+        <CycleInfo CycleNumber="1" StartDate="2026-11-01 00:00:00" EndDate="2029-04-01 00:00:00" Active="true" />
+    </Cycles>
+    <ProgramHistory>
+        <HistoryEntry Date="Tue Mar 31 18:01:17 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - aarch64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1051.apt" />
+        <HistoryEntry Date="Tue Mar 31 18:01:38 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - aarch64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1051.apt" />
+        <HistoryEntry Date="Tue Mar 31 18:01:47 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - aarch64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1051.apt" />
+        <HistoryEntry Date="Mon Jun 08 18:00:21 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/tuning_seed.apt" />
+    </ProgramHistory>
+    <ToolData>
+        <ToolData Name="Phase2SubmissionData" />
+        <ToolData Name="SubmissionData">
+            <ToolValue Name="AssignedID">00000</ToolValue>
+            <ToolValue Name="SubmissionLog">
+Assuming assigned ID: 00000</ToolValue>
+        </ToolData>
+    </ToolData>
+    <Properties />
+</RomanProgram>

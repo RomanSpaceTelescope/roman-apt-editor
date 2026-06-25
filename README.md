@@ -12,7 +12,8 @@ python populate_apt.py --seed CFA_seed.apt --input data.csv --out output.apt
 python populate_lolo_apt.py --seed LOLO_seed.apt --input data.csv --out output.apt
 
 # With Excel sheet selection
-python populate_apt.py --input data.xlsx --sheet "Sheet1" --out output.apt
+python populate_apt.py --seed tuning_seed.apt --input 260615_sRCS_WFI_flight_tuning_CFA_APT.xlsx --out output.apt
+
 ```
 
 ## Input Columns

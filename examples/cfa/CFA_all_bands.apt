@@ -1,5 +1,5 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<RomanProgram xmlns="http://www.stsci.edu/Roman/APT" schemaVersion="29" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RomanProgram schemaVersion="29" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" xmlns="http://www.stsci.edu/Roman/APT">
     <ProgramInformation>
         <ProgramPhase>Approved</ProgramPhase>
         <Title>CAR-173: Count-rate dependent nonlinearity (Direct)</Title>
@@ -14,7 +14,20 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
         <IncludesCalibrations>true</IncludesCalibrations>
         <PureParallelProgram>false</PureParallelProgram>
         <Cycle>0</Cycle>
-        <ObservingDescription>TBD</ObservingDescription>
+        <ObservingDescription>Combinatorial Flux Addition (CFA) Program
+
+Primary Goals
+The CFA program is designed to achieve two main objectives:
+- CRNL Characterization: Characterize count-rate dependent nonlinearity (CRNL) using the CFA approach, providing a baseline for comparison against CRNL measurements obtained via the Lamp-on-Lamp-off (LOLO) approach.
+- Verification &amp; Trending: Verify data consistency against ground-based results, including Detector Characterization Lab (DCL) CRNL measurements. Furthermore, initiate on-sky trending to compare current performance with previous SCIPA, WFI, and earlier CFA/RCS tests for the flight detectors.
+
+Methodology
+The test procedure involves collecting a sequence of Wide Field Instrument (WFI) exposures with the dark element in place. During these exposures, the Relative Calibration System (RCS) is operated using pairs of LEDs (bank 1 and bank 2 for a specific band). The system is configured so that the combined fluxes from the LED pairs incrementally increase the total flux throughout the sequence.
+
+Pass Plans &amp; Sequences
+CFA sequences are governed by pass plans established for all bands, and structured as follows:
+- Survey Steps: Each band includes three survey steps, allowing for the repetition of certain calibrations as needed.
+- "ALL" vs. "HF" Plans: Pass plans designated as "ALL" for a given band cover the complete, extended range of fluxes set in the sequence. Because they cover the full range, "ALL" sequences typically take twice as long to execute as the High Flux ("HF") pass plans.</ObservingDescription>
         <PrincipalInvestigator>
             <InvestigatorAddress>
                 <UniqueID>26521</UniqueID>
@@ -64,20 +77,20 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
             <Contact>true</Contact>
         </CoInvestigator>
     </ProgramInformation>
-    <Targets />
-    <MosaicPatterns />
+    <Targets/>
+    <MosaicPatterns/>
     <PassPlans>
         <PassPlan Number="1">
             <Label>Band 1 ALL</Label>
             <TargetSelection>Multiple Fixed Targets</TargetSelection>
-            <ReferenceCoords />
+            <ReferenceCoords></ReferenceCoords>
             <Observation>
                 <Target>NONE</Target>
                 <Sector>NONE</Sector>
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
-                <Resultant>40</Resultant>
+                <Resultant>41</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -92,15 +105,15 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
-                <Resultant>40</Resultant>
+                <Resultant>41</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=40, LED11=0.3
-2, R=40, LED11=0.3
-3, R=40, LED11=0.3</LampState>
+                        <LampState>1, R=41, LED11=0.3
+2, R=41, LED11=0.3
+3, R=41, LED11=0.3</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -109,19 +122,19 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <Sector>NONE</Sector>
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>6</NumberOfExposures>
-                <MultiAccumTable>DROP_4_OF_5</MultiAccumTable>
-                <Resultant>44</Resultant>
+                <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
+                <Resultant>21</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=44, LED21=0.6
-2, R=44, LED21=0.6
-3, R=44, LED21=0.6
-4, R=29, LED11=0.3, LED21=0.6
-5, R=29, LED11=0.3, LED21=0.6
-6, R=29, LED11=0.3, LED21=0.6</LampState>
+                        <LampState>1, R=21, LED21=0.6
+2, R=21, LED21=0.6
+3, R=21, LED21=0.6
+4, R=14, LED11=0.3, LED21=0.6
+5, R=14, LED11=0.3, LED21=0.6
+6, R=14, LED11=0.3, LED21=0.6</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -131,7 +144,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_4_OF_5</MultiAccumTable>
-                <Resultant>19</Resultant>
+                <Resultant>20</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -146,24 +159,24 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>15</NumberOfExposures>
                 <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
-                <Resultant>31</Resultant>
+                <Resultant>32</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=31, LED11=1.4
-2, R=31, LED11=1.4
-3, R=31, LED11=1.4
-4, R=22, LED11=1.4, LED21=0.6
-5, R=22, LED11=1.4, LED21=0.6
-6, R=22, LED11=1.4, LED21=0.6
-7, R=15, LED21=2.9
-8, R=15, LED21=2.9
-9, R=15, LED21=2.9
-10, R=14, LED11=0.3, LED21=2.9
-11, R=14, LED11=0.3, LED21=2.9
-12, R=14, LED11=0.3, LED21=2.9
+                        <LampState>1, R=32, LED11=1.4
+2, R=32, LED11=1.4
+3, R=32, LED11=1.4
+4, R=23, LED11=1.4, LED21=0.6
+5, R=23, LED11=1.4, LED21=0.6
+6, R=23, LED11=1.4, LED21=0.6
+7, R=16, LED21=2.9
+8, R=16, LED21=2.9
+9, R=16, LED21=2.9
+10, R=15, LED11=0.3, LED21=2.9
+11, R=15, LED11=0.3, LED21=2.9
+12, R=15, LED11=0.3, LED21=2.9
 13, R=11, LED11=1.4, LED21=2.9
 14, R=11, LED11=1.4, LED21=2.9
 15, R=11, LED11=1.4, LED21=2.9</LampState>
@@ -236,24 +249,24 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>15</NumberOfExposures>
                 <MultiAccumTable>DROP_4_OF_5</MultiAccumTable>
-                <Resultant>32</Resultant>
+                <Resultant>33</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=32, LED11=6.1
-2, R=32, LED11=6.1
-3, R=32, LED11=6.1
-4, R=22, LED11=6.1, LED21=2.9
-5, R=22, LED11=6.1, LED21=2.9
-6, R=22, LED11=6.1, LED21=2.9
+                        <LampState>1, R=33, LED11=6.1
+2, R=33, LED11=6.1
+3, R=33, LED11=6.1
+4, R=23, LED11=6.1, LED21=2.9
+5, R=23, LED11=6.1, LED21=2.9
+6, R=23, LED11=6.1, LED21=2.9
 7, R=16, LED21=12.9
 8, R=16, LED21=12.9
 9, R=16, LED21=12.9
-10, R=14, LED11=1.4, LED21=12.9
-11, R=14, LED11=1.4, LED21=12.9
-12, R=14, LED11=1.4, LED21=12.9
+10, R=15, LED11=1.4, LED21=12.9
+11, R=15, LED11=1.4, LED21=12.9
+12, R=15, LED11=1.4, LED21=12.9
 13, R=11, LED11=6.1, LED21=12.9
 14, R=11, LED11=6.1, LED21=12.9
 15, R=11, LED11=6.1, LED21=12.9</LampState>
@@ -266,7 +279,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -387,18 +400,18 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                         <LampState>1, R=27, LED11=123.0
 2, R=27, LED11=123.0
 3, R=27, LED11=123.0
-4, R=18, LED11=123.0, LED21=58.0
-5, R=18, LED11=123.0, LED21=58.0
-6, R=18, LED11=123.0, LED21=58.0
-7, R=13, LED21=261.0
-8, R=13, LED21=261.0
-9, R=13, LED21=261.0
+4, R=19, LED11=123.0, LED21=58.0
+5, R=19, LED11=123.0, LED21=58.0
+6, R=19, LED11=123.0, LED21=58.0
+7, R=14, LED21=261.0
+8, R=14, LED21=261.0
+9, R=14, LED21=261.0
 10, R=12, LED11=27.3, LED21=261.0
 11, R=12, LED11=27.3, LED21=261.0
 12, R=12, LED11=27.3, LED21=261.0
-13, R=9, LED11=123.0, LED21=261.0
-14, R=9, LED11=123.0, LED21=261.0
-15, R=9, LED11=123.0, LED21=261.0</LampState>
+13, R=10, LED11=123.0, LED21=261.0
+14, R=10, LED11=123.0, LED21=261.0
+15, R=10, LED11=123.0, LED21=261.0</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -516,19 +529,19 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
-            <ToolData />
+            <ToolData/>
         </PassPlan>
         <PassPlan Number="2">
             <Label>Band 2 ALL</Label>
             <TargetSelection>Multiple Fixed Targets</TargetSelection>
-            <ReferenceCoords />
+            <ReferenceCoords></ReferenceCoords>
             <Observation>
                 <Target>NONE</Target>
                 <Sector>NONE</Sector>
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
-                <Resultant>40</Resultant>
+                <Resultant>41</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -543,15 +556,15 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
-                <Resultant>40</Resultant>
+                <Resultant>41</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=40, LED12=0.3
-2, R=40, LED12=0.3
-3, R=40, LED12=0.3</LampState>
+                        <LampState>1, R=41, LED12=0.3
+2, R=41, LED12=0.3
+3, R=41, LED12=0.3</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -560,19 +573,19 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <Sector>NONE</Sector>
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>6</NumberOfExposures>
-                <MultiAccumTable>DROP_4_OF_5</MultiAccumTable>
-                <Resultant>44</Resultant>
+                <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
+                <Resultant>21</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=44, LED22=0.6
-2, R=44, LED22=0.6
-3, R=44, LED22=0.6
-4, R=29, LED12=0.3, LED22=0.6
-5, R=29, LED12=0.3, LED22=0.6
-6, R=29, LED12=0.3, LED22=0.6</LampState>
+                        <LampState>1, R=21, LED22=0.6
+2, R=21, LED22=0.6
+3, R=21, LED22=0.6
+4, R=14, LED12=0.3, LED22=0.6
+5, R=14, LED12=0.3, LED22=0.6
+6, R=14, LED12=0.3, LED22=0.6</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -582,7 +595,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_4_OF_5</MultiAccumTable>
-                <Resultant>19</Resultant>
+                <Resultant>20</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -597,24 +610,24 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>15</NumberOfExposures>
                 <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
-                <Resultant>31</Resultant>
+                <Resultant>32</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=31, LED12=1.4
-2, R=31, LED12=1.4
-3, R=31, LED12=1.4
-4, R=22, LED12=1.4, LED22=0.6
-5, R=22, LED12=1.4, LED22=0.6
-6, R=22, LED12=1.4, LED22=0.6
-7, R=15, LED22=2.9
-8, R=15, LED22=2.9
-9, R=15, LED22=2.9
-10, R=14, LED12=0.3, LED22=2.9
-11, R=14, LED12=0.3, LED22=2.9
-12, R=14, LED12=0.3, LED22=2.9
+                        <LampState>1, R=32, LED12=1.4
+2, R=32, LED12=1.4
+3, R=32, LED12=1.4
+4, R=23, LED12=1.4, LED22=0.6
+5, R=23, LED12=1.4, LED22=0.6
+6, R=23, LED12=1.4, LED22=0.6
+7, R=16, LED22=2.9
+8, R=16, LED22=2.9
+9, R=16, LED22=2.9
+10, R=15, LED12=0.3, LED22=2.9
+11, R=15, LED12=0.3, LED22=2.9
+12, R=15, LED12=0.3, LED22=2.9
 13, R=11, LED12=1.4, LED22=2.9
 14, R=11, LED12=1.4, LED22=2.9
 15, R=11, LED12=1.4, LED22=2.9</LampState>
@@ -687,24 +700,24 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>15</NumberOfExposures>
                 <MultiAccumTable>DROP_4_OF_5</MultiAccumTable>
-                <Resultant>32</Resultant>
+                <Resultant>33</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=32, LED12=6.1
-2, R=32, LED12=6.1
-3, R=32, LED12=6.1
-4, R=22, LED12=6.1, LED22=2.9
-5, R=22, LED12=6.1, LED22=2.9
-6, R=22, LED12=6.1, LED22=2.9
+                        <LampState>1, R=33, LED12=6.1
+2, R=33, LED12=6.1
+3, R=33, LED12=6.1
+4, R=23, LED12=6.1, LED22=2.9
+5, R=23, LED12=6.1, LED22=2.9
+6, R=23, LED12=6.1, LED22=2.9
 7, R=16, LED22=12.9
 8, R=16, LED22=12.9
 9, R=16, LED22=12.9
-10, R=14, LED12=1.4, LED22=12.9
-11, R=14, LED12=1.4, LED22=12.9
-12, R=14, LED12=1.4, LED22=12.9
+10, R=15, LED12=1.4, LED22=12.9
+11, R=15, LED12=1.4, LED22=12.9
+12, R=15, LED12=1.4, LED22=12.9
 13, R=11, LED12=6.1, LED22=12.9
 14, R=11, LED12=6.1, LED22=12.9
 15, R=11, LED12=6.1, LED22=12.9</LampState>
@@ -717,7 +730,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -838,18 +851,18 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                         <LampState>1, R=27, LED12=123.0
 2, R=27, LED12=123.0
 3, R=27, LED12=123.0
-4, R=18, LED12=123.0, LED22=58.0
-5, R=18, LED12=123.0, LED22=58.0
-6, R=18, LED12=123.0, LED22=58.0
-7, R=13, LED22=261.0
-8, R=13, LED22=261.0
-9, R=13, LED22=261.0
+4, R=19, LED12=123.0, LED22=58.0
+5, R=19, LED12=123.0, LED22=58.0
+6, R=19, LED12=123.0, LED22=58.0
+7, R=14, LED22=261.0
+8, R=14, LED22=261.0
+9, R=14, LED22=261.0
 10, R=12, LED12=27.3, LED22=261.0
 11, R=12, LED12=27.3, LED22=261.0
 12, R=12, LED12=27.3, LED22=261.0
-13, R=9, LED12=123.0, LED22=261.0
-14, R=9, LED12=123.0, LED22=261.0
-15, R=9, LED12=123.0, LED22=261.0</LampState>
+13, R=10, LED12=123.0, LED22=261.0
+14, R=10, LED12=123.0, LED22=261.0
+15, R=10, LED12=123.0, LED22=261.0</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -967,19 +980,19 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
-            <ToolData />
+            <ToolData/>
         </PassPlan>
         <PassPlan Number="3">
             <Label>Band 3 ALL</Label>
             <TargetSelection>Multiple Fixed Targets</TargetSelection>
-            <ReferenceCoords />
+            <ReferenceCoords></ReferenceCoords>
             <Observation>
                 <Target>NONE</Target>
                 <Sector>NONE</Sector>
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
-                <Resultant>40</Resultant>
+                <Resultant>41</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -994,15 +1007,15 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
-                <Resultant>40</Resultant>
+                <Resultant>41</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=40, LED13=0.3
-2, R=40, LED13=0.3
-3, R=40, LED13=0.3</LampState>
+                        <LampState>1, R=41, LED13=0.3
+2, R=41, LED13=0.3
+3, R=41, LED13=0.3</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -1011,19 +1024,19 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <Sector>NONE</Sector>
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>6</NumberOfExposures>
-                <MultiAccumTable>DROP_4_OF_5</MultiAccumTable>
-                <Resultant>44</Resultant>
+                <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
+                <Resultant>21</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=44, LED23=0.6
-2, R=44, LED23=0.6
-3, R=44, LED23=0.6
-4, R=29, LED13=0.3, LED23=0.6
-5, R=29, LED13=0.3, LED23=0.6
-6, R=29, LED13=0.3, LED23=0.6</LampState>
+                        <LampState>1, R=21, LED23=0.6
+2, R=21, LED23=0.6
+3, R=21, LED23=0.6
+4, R=14, LED13=0.3, LED23=0.6
+5, R=14, LED13=0.3, LED23=0.6
+6, R=14, LED13=0.3, LED23=0.6</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -1033,7 +1046,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_4_OF_5</MultiAccumTable>
-                <Resultant>19</Resultant>
+                <Resultant>20</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -1048,24 +1061,24 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>15</NumberOfExposures>
                 <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
-                <Resultant>31</Resultant>
+                <Resultant>32</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=31, LED13=1.4
-2, R=31, LED13=1.4
-3, R=31, LED13=1.4
-4, R=22, LED13=1.4, LED23=0.6
-5, R=22, LED13=1.4, LED23=0.6
-6, R=22, LED13=1.4, LED23=0.6
-7, R=15, LED23=2.9
-8, R=15, LED23=2.9
-9, R=15, LED23=2.9
-10, R=14, LED13=0.3, LED23=2.9
-11, R=14, LED13=0.3, LED23=2.9
-12, R=14, LED13=0.3, LED23=2.9
+                        <LampState>1, R=32, LED13=1.4
+2, R=32, LED13=1.4
+3, R=32, LED13=1.4
+4, R=23, LED13=1.4, LED23=0.6
+5, R=23, LED13=1.4, LED23=0.6
+6, R=23, LED13=1.4, LED23=0.6
+7, R=16, LED23=2.9
+8, R=16, LED23=2.9
+9, R=16, LED23=2.9
+10, R=15, LED13=0.3, LED23=2.9
+11, R=15, LED13=0.3, LED23=2.9
+12, R=15, LED13=0.3, LED23=2.9
 13, R=11, LED13=1.4, LED23=2.9
 14, R=11, LED13=1.4, LED23=2.9
 15, R=11, LED13=1.4, LED23=2.9</LampState>
@@ -1138,24 +1151,24 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>15</NumberOfExposures>
                 <MultiAccumTable>DROP_4_OF_5</MultiAccumTable>
-                <Resultant>32</Resultant>
+                <Resultant>33</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=32, LED13=6.1
-2, R=32, LED13=6.1
-3, R=32, LED13=6.1
-4, R=22, LED13=6.1, LED23=2.9
-5, R=22, LED13=6.1, LED23=2.9
-6, R=22, LED13=6.1, LED23=2.9
+                        <LampState>1, R=33, LED13=6.1
+2, R=33, LED13=6.1
+3, R=33, LED13=6.1
+4, R=23, LED13=6.1, LED23=2.9
+5, R=23, LED13=6.1, LED23=2.9
+6, R=23, LED13=6.1, LED23=2.9
 7, R=16, LED23=12.9
 8, R=16, LED23=12.9
 9, R=16, LED23=12.9
-10, R=14, LED13=1.4, LED23=12.9
-11, R=14, LED13=1.4, LED23=12.9
-12, R=14, LED13=1.4, LED23=12.9
+10, R=15, LED13=1.4, LED23=12.9
+11, R=15, LED13=1.4, LED23=12.9
+12, R=15, LED13=1.4, LED23=12.9
 13, R=11, LED13=6.1, LED23=12.9
 14, R=11, LED13=6.1, LED23=12.9
 15, R=11, LED13=6.1, LED23=12.9</LampState>
@@ -1168,7 +1181,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -1289,18 +1302,18 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                         <LampState>1, R=27, LED13=123.0
 2, R=27, LED13=123.0
 3, R=27, LED13=123.0
-4, R=18, LED13=123.0, LED23=58.0
-5, R=18, LED13=123.0, LED23=58.0
-6, R=18, LED13=123.0, LED23=58.0
-7, R=13, LED23=261.0
-8, R=13, LED23=261.0
-9, R=13, LED23=261.0
+4, R=19, LED13=123.0, LED23=58.0
+5, R=19, LED13=123.0, LED23=58.0
+6, R=19, LED13=123.0, LED23=58.0
+7, R=14, LED23=261.0
+8, R=14, LED23=261.0
+9, R=14, LED23=261.0
 10, R=12, LED13=27.3, LED23=261.0
 11, R=12, LED13=27.3, LED23=261.0
 12, R=12, LED13=27.3, LED23=261.0
-13, R=9, LED13=123.0, LED23=261.0
-14, R=9, LED13=123.0, LED23=261.0
-15, R=9, LED13=123.0, LED23=261.0</LampState>
+13, R=10, LED13=123.0, LED23=261.0
+14, R=10, LED13=123.0, LED23=261.0
+15, R=10, LED13=123.0, LED23=261.0</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -1418,12 +1431,12 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
-            <ToolData />
+            <ToolData/>
         </PassPlan>
         <PassPlan Number="4">
             <Label>Band 1 HF</Label>
             <TargetSelection>Multiple Fixed Targets</TargetSelection>
-            <ReferenceCoords />
+            <ReferenceCoords></ReferenceCoords>
             <Observation>
                 <Target>NONE</Target>
                 <Sector>NONE</Sector>
@@ -1499,15 +1512,15 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
-                <Resultant>15</Resultant>
+                <Resultant>16</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=15, LED11=6.1
-2, R=15, LED11=6.1
-3, R=15, LED11=6.1</LampState>
+                        <LampState>1, R=16, LED11=6.1
+2, R=16, LED11=6.1
+3, R=16, LED11=6.1</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -1526,9 +1539,9 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                         <LampState>1, R=26, LED21=12.9
 2, R=26, LED21=12.9
 3, R=26, LED21=12.9
-4, R=17, LED11=6.1, LED21=12.9
-5, R=17, LED11=6.1, LED21=12.9
-6, R=17, LED11=6.1, LED21=12.9</LampState>
+4, R=18, LED11=6.1, LED21=12.9
+5, R=18, LED11=6.1, LED21=12.9
+6, R=18, LED11=6.1, LED21=12.9</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -1538,7 +1551,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -1659,18 +1672,18 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                         <LampState>1, R=27, LED11=123.0
 2, R=27, LED11=123.0
 3, R=27, LED11=123.0
-4, R=18, LED11=123.0, LED21=58.0
-5, R=18, LED11=123.0, LED21=58.0
-6, R=18, LED11=123.0, LED21=58.0
-7, R=13, LED21=261.0
-8, R=13, LED21=261.0
-9, R=13, LED21=261.0
+4, R=19, LED11=123.0, LED21=58.0
+5, R=19, LED11=123.0, LED21=58.0
+6, R=19, LED11=123.0, LED21=58.0
+7, R=14, LED21=261.0
+8, R=14, LED21=261.0
+9, R=14, LED21=261.0
 10, R=12, LED11=27.3, LED21=261.0
 11, R=12, LED11=27.3, LED21=261.0
 12, R=12, LED11=27.3, LED21=261.0
-13, R=9, LED11=123.0, LED21=261.0
-14, R=9, LED11=123.0, LED21=261.0
-15, R=9, LED11=123.0, LED21=261.0</LampState>
+13, R=10, LED11=123.0, LED21=261.0
+14, R=10, LED11=123.0, LED21=261.0
+15, R=10, LED11=123.0, LED21=261.0</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -1788,12 +1801,12 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
-            <ToolData />
+            <ToolData/>
         </PassPlan>
         <PassPlan Number="5">
             <Label>Band 2 HF</Label>
             <TargetSelection>Multiple Fixed Targets</TargetSelection>
-            <ReferenceCoords />
+            <ReferenceCoords></ReferenceCoords>
             <Observation>
                 <Target>NONE</Target>
                 <Sector>NONE</Sector>
@@ -1869,15 +1882,15 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
-                <Resultant>15</Resultant>
+                <Resultant>16</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=15, LED12=6.1
-2, R=15, LED12=6.1
-3, R=15, LED12=6.1</LampState>
+                        <LampState>1, R=16, LED12=6.1
+2, R=16, LED12=6.1
+3, R=16, LED12=6.1</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -1896,9 +1909,9 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                         <LampState>1, R=26, LED22=12.9
 2, R=26, LED22=12.9
 3, R=26, LED22=12.9
-4, R=17, LED12=6.1, LED22=12.9
-5, R=17, LED12=6.1, LED22=12.9
-6, R=17, LED12=6.1, LED22=12.9</LampState>
+4, R=18, LED12=6.1, LED22=12.9
+5, R=18, LED12=6.1, LED22=12.9
+6, R=18, LED12=6.1, LED22=12.9</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -1908,7 +1921,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -2029,18 +2042,18 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                         <LampState>1, R=27, LED12=123.0
 2, R=27, LED12=123.0
 3, R=27, LED12=123.0
-4, R=18, LED12=123.0, LED22=58.0
-5, R=18, LED12=123.0, LED22=58.0
-6, R=18, LED12=123.0, LED22=58.0
-7, R=13, LED22=261.0
-8, R=13, LED22=261.0
-9, R=13, LED22=261.0
+4, R=19, LED12=123.0, LED22=58.0
+5, R=19, LED12=123.0, LED22=58.0
+6, R=19, LED12=123.0, LED22=58.0
+7, R=14, LED22=261.0
+8, R=14, LED22=261.0
+9, R=14, LED22=261.0
 10, R=12, LED12=27.3, LED22=261.0
 11, R=12, LED12=27.3, LED22=261.0
 12, R=12, LED12=27.3, LED22=261.0
-13, R=9, LED12=123.0, LED22=261.0
-14, R=9, LED12=123.0, LED22=261.0
-15, R=9, LED12=123.0, LED22=261.0</LampState>
+13, R=10, LED12=123.0, LED22=261.0
+14, R=10, LED12=123.0, LED22=261.0
+15, R=10, LED12=123.0, LED22=261.0</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -2158,12 +2171,12 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
-            <ToolData />
+            <ToolData/>
         </PassPlan>
         <PassPlan Number="6">
             <Label>Band 3 HF</Label>
             <TargetSelection>Multiple Fixed Targets</TargetSelection>
-            <ReferenceCoords />
+            <ReferenceCoords></ReferenceCoords>
             <Observation>
                 <Target>NONE</Target>
                 <Sector>NONE</Sector>
@@ -2239,15 +2252,15 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
-                <Resultant>15</Resultant>
+                <Resultant>16</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=15, LED13=6.1
-2, R=15, LED13=6.1
-3, R=15, LED13=6.1</LampState>
+                        <LampState>1, R=16, LED13=6.1
+2, R=16, LED13=6.1
+3, R=16, LED13=6.1</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -2266,9 +2279,9 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                         <LampState>1, R=26, LED23=12.9
 2, R=26, LED23=12.9
 3, R=26, LED23=12.9
-4, R=17, LED13=6.1, LED23=12.9
-5, R=17, LED13=6.1, LED23=12.9
-6, R=17, LED13=6.1, LED23=12.9</LampState>
+4, R=18, LED13=6.1, LED23=12.9
+5, R=18, LED13=6.1, LED23=12.9
+6, R=18, LED13=6.1, LED23=12.9</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -2278,7 +2291,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -2399,18 +2412,18 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                         <LampState>1, R=27, LED13=123.0
 2, R=27, LED13=123.0
 3, R=27, LED13=123.0
-4, R=18, LED13=123.0, LED23=58.0
-5, R=18, LED13=123.0, LED23=58.0
-6, R=18, LED13=123.0, LED23=58.0
-7, R=13, LED23=261.0
-8, R=13, LED23=261.0
-9, R=13, LED23=261.0
+4, R=19, LED13=123.0, LED23=58.0
+5, R=19, LED13=123.0, LED23=58.0
+6, R=19, LED13=123.0, LED23=58.0
+7, R=14, LED23=261.0
+8, R=14, LED23=261.0
+9, R=14, LED23=261.0
 10, R=12, LED13=27.3, LED23=261.0
 11, R=12, LED13=27.3, LED23=261.0
 12, R=12, LED13=27.3, LED23=261.0
-13, R=9, LED13=123.0, LED23=261.0
-14, R=9, LED13=123.0, LED23=261.0
-15, R=9, LED13=123.0, LED23=261.0</LampState>
+13, R=10, LED13=123.0, LED23=261.0
+14, R=10, LED13=123.0, LED23=261.0
+15, R=10, LED13=123.0, LED23=261.0</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -2528,12 +2541,12 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
-            <ToolData />
+            <ToolData/>
         </PassPlan>
         <PassPlan Number="7">
             <Label>Band 4 HF</Label>
             <TargetSelection>Multiple Fixed Targets</TargetSelection>
-            <ReferenceCoords />
+            <ReferenceCoords></ReferenceCoords>
             <Observation>
                 <Target>NONE</Target>
                 <Sector>NONE</Sector>
@@ -2621,15 +2634,15 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
-                <Resultant>15</Resultant>
+                <Resultant>16</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=15, LED14=6.1 (pre=30,905.56)
-2, R=15, LED14=6.1
-3, R=15, LED14=6.1</LampState>
+                        <LampState>1, R=16, LED14=6.1 (pre=30,905.56)
+2, R=16, LED14=6.1
+3, R=16, LED14=6.1</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -2648,9 +2661,9 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                         <LampState>1, R=26, LED24=12.9 (pre=30,1911.31)
 2, R=26, LED24=12.9
 3, R=26, LED24=12.9
-4, R=17, LED14=6.1 (pre=30,905.56), LED24=12.9
-5, R=17, LED14=6.1, LED24=12.9
-6, R=17, LED14=6.1, LED24=12.9</LampState>
+4, R=18, LED14=6.1 (pre=30,905.56), LED24=12.9
+5, R=18, LED14=6.1, LED24=12.9
+6, R=18, LED14=6.1, LED24=12.9</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -2660,7 +2673,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>6</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -2675,30 +2688,30 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>18</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=18, LED14=27.3 (pre=30,2765.55)
-2, R=18, LED14=27.3
-3, R=18, LED14=27.3
+                        <LampState>1, R=19, LED14=27.3 (pre=30,2765.55)
+2, R=19, LED14=27.3
+3, R=19, LED14=27.3
 4, R=13, LED14=27.3, LED24=12.9 (pre=30,1911.31)
 5, R=13, LED14=27.3, LED24=12.9
 6, R=13, LED14=27.3, LED24=12.9
-7, R=38, LED24=12.9
-8, R=38, LED24=12.9
-9, R=38, LED24=12.9
+7, R=39, LED24=12.9
+8, R=39, LED24=12.9
+9, R=39, LED24=12.9
 10, R=9, LED24=58.0 (pre=30,2780.82)
 11, R=9, LED24=58.0
 12, R=9, LED24=58.0
-13, R=8, LED14=6.1 (pre=30,905.56), LED24=58.0
-14, R=8, LED14=6.1, LED24=58.0
-15, R=8, LED14=6.1, LED24=58.0
-16, R=6, LED14=27.3 (pre=30,1883.28), LED24=58.0
-17, R=6, LED14=27.3, LED24=58.0
-18, R=6, LED14=27.3, LED24=58.0</LampState>
+13, R=9, LED14=6.1 (pre=30,905.56), LED24=58.0
+14, R=9, LED14=6.1, LED24=58.0
+15, R=9, LED14=6.1, LED24=58.0
+16, R=7, LED14=27.3 (pre=30,1883.28), LED24=58.0
+17, R=7, LED14=27.3, LED24=58.0
+18, R=7, LED14=27.3, LED24=58.0</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -2790,21 +2803,21 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>30</NumberOfExposures>
                 <MultiAccumTable>DROP_3_OF_4</MultiAccumTable>
-                <Resultant>9</Resultant>
+                <Resultant>10</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=9, LED14=27.3 (pre=30,2765.55)
-2, R=9, LED14=27.3
-3, R=9, LED14=27.3
+                        <LampState>1, R=10, LED14=27.3 (pre=30,2765.55)
+2, R=10, LED14=27.3
+3, R=10, LED14=27.3
 4, R=27, LED14=123.0 (pre=30,3760.63)
 5, R=27, LED14=123.0
 6, R=27, LED14=123.0
-7, R=18, LED14=123.0, LED24=58.0 (pre=30,4659.71)
-8, R=18, LED14=123.0, LED24=58.0
-9, R=18, LED14=123.0, LED24=58.0
+7, R=19, LED14=123.0, LED24=58.0 (pre=30,4659.71)
+8, R=19, LED14=123.0, LED24=58.0
+9, R=19, LED14=123.0, LED24=58.0
 10, R=5, LED24=58.0
 11, R=5, LED24=58.0
 12, R=5, LED24=58.0
@@ -2817,15 +2830,15 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
 19, R=5, LED24=58.0
 20, R=5, LED24=58.0
 21, R=5, LED24=58.0
-22, R=13, LED24=261.0 (pre=30,8072.14)
-23, R=13, LED24=261.0
-24, R=13, LED24=261.0
+22, R=14, LED24=261.0 (pre=30,8072.14)
+23, R=14, LED24=261.0
+24, R=14, LED24=261.0
 25, R=12, LED14=27.3 (pre=30,2765.55), LED24=261.0
 26, R=12, LED14=27.3, LED24=261.0
 27, R=12, LED14=27.3, LED24=261.0
-28, R=9, LED14=123.0 (pre=30,3760.63), LED24=261.0
-29, R=9, LED14=123.0, LED24=261.0
-30, R=9, LED14=123.0, LED24=261.0</LampState>
+28, R=10, LED14=123.0 (pre=30,3760.63), LED24=261.0
+29, R=10, LED14=123.0, LED24=261.0
+30, R=10, LED14=123.0, LED24=261.0</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -2835,7 +2848,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>6</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>17</Resultant>
+                <Resultant>18</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -2850,34 +2863,34 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>22</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=18, LED14=27.3 (pre=30,2765.55)
-2, R=18, LED14=27.3
-3, R=18, LED14=27.3
-4, R=12, LED14=553.6 (pre=30,26682.17)
-5, R=12, LED14=553.6
-6, R=12, LED14=553.6
-7, R=8, LED14=553.6, LED24=261.0 (pre=30,12698.72)
-8, R=8, LED14=553.6, LED24=261.0
-9, R=8, LED14=553.6, LED24=261.0
-10, R=25, LED24=261.0
-11, R=25, LED24=261.0
-12, R=25, LED24=261.0
-13, R=25, LED24=261.0
+                        <LampState>1, R=19, LED14=27.3 (pre=30,2765.55)
+2, R=19, LED14=27.3
+3, R=19, LED14=27.3
+4, R=13, LED14=553.6 (pre=30,26682.17)
+5, R=13, LED14=553.6
+6, R=13, LED14=553.6
+7, R=9, LED14=553.6, LED24=261.0 (pre=30,12698.72)
+8, R=9, LED14=553.6, LED24=261.0
+9, R=9, LED14=553.6, LED24=261.0
+10, R=26, LED24=261.0
+11, R=26, LED24=261.0
+12, R=26, LED24=261.0
+13, R=26, LED24=261.0
 14, R=6, LED24=1174.3 (pre=33,46086.18)
 15, R=6, LED24=1174.3
 16, R=6, LED24=1174.3
-17, R=5, LED14=123.0 (pre=30,6502.16), LED24=1174.3
-18, R=5, LED14=123.0, LED24=1174.3
-19, R=5, LED14=123.0, LED24=1174.3
-20, R=4, LED14=553.6 (pre=30,22945.56), LED24=1174.3
-21, R=4, LED14=553.6, LED24=1174.3
-22, R=4, LED14=553.6, LED24=1174.3</LampState>
+17, R=6, LED14=123.0 (pre=30,6502.16), LED24=1174.3
+18, R=6, LED14=123.0, LED24=1174.3
+19, R=6, LED14=123.0, LED24=1174.3
+20, R=5, LED14=553.6 (pre=30,22945.56), LED24=1174.3
+21, R=5, LED14=553.6, LED24=1174.3
+22, R=5, LED14=553.6, LED24=1174.3</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -3121,12 +3134,12 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
-            <ToolData />
+            <ToolData/>
         </PassPlan>
         <PassPlan Number="8">
             <Label>Band 5 HF</Label>
             <TargetSelection>Multiple Fixed Targets</TargetSelection>
-            <ReferenceCoords />
+            <ReferenceCoords></ReferenceCoords>
             <Observation>
                 <Target>NONE</Target>
                 <Sector>NONE</Sector>
@@ -3214,15 +3227,15 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
-                <Resultant>15</Resultant>
+                <Resultant>16</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=15, LED15=6.1 (pre=30,527.66)
-2, R=15, LED15=6.1
-3, R=15, LED15=6.1</LampState>
+                        <LampState>1, R=16, LED15=6.1 (pre=30,527.66)
+2, R=16, LED15=6.1
+3, R=16, LED15=6.1</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -3241,9 +3254,9 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                         <LampState>1, R=26, LED25=12.9 (pre=30,996.5)
 2, R=26, LED25=12.9
 3, R=26, LED25=12.9
-4, R=17, LED15=6.1 (pre=30,527.66), LED25=12.9
-5, R=17, LED15=6.1, LED25=12.9
-6, R=17, LED15=6.1, LED25=12.9</LampState>
+4, R=18, LED15=6.1 (pre=30,527.66), LED25=12.9
+5, R=18, LED15=6.1, LED25=12.9
+6, R=18, LED15=6.1, LED25=12.9</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -3253,7 +3266,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>6</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -3268,30 +3281,30 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>18</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=18, LED15=27.3 (pre=30,1497.94)
-2, R=18, LED15=27.3
-3, R=18, LED15=27.3
+                        <LampState>1, R=19, LED15=27.3 (pre=30,1497.94)
+2, R=19, LED15=27.3
+3, R=19, LED15=27.3
 4, R=13, LED15=27.3, LED25=12.9 (pre=30,996.5)
 5, R=13, LED15=27.3, LED25=12.9
 6, R=13, LED15=27.3, LED25=12.9
-7, R=38, LED25=12.9
-8, R=38, LED25=12.9
-9, R=38, LED25=12.9
+7, R=39, LED25=12.9
+8, R=39, LED25=12.9
+9, R=39, LED25=12.9
 10, R=9, LED25=58.0 (pre=30,1485.1)
 11, R=9, LED25=58.0
 12, R=9, LED25=58.0
-13, R=8, LED15=6.1 (pre=30,527.66), LED25=58.0
-14, R=8, LED15=6.1, LED25=58.0
-15, R=8, LED15=6.1, LED25=58.0
-16, R=6, LED15=27.3 (pre=30,1075.08), LED25=58.0
-17, R=6, LED15=27.3, LED25=58.0
-18, R=6, LED15=27.3, LED25=58.0</LampState>
+13, R=9, LED15=6.1 (pre=30,527.66), LED25=58.0
+14, R=9, LED15=6.1, LED25=58.0
+15, R=9, LED15=6.1, LED25=58.0
+16, R=7, LED15=27.3 (pre=30,1075.08), LED25=58.0
+17, R=7, LED15=27.3, LED25=58.0
+18, R=7, LED15=27.3, LED25=58.0</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -3383,21 +3396,21 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>30</NumberOfExposures>
                 <MultiAccumTable>DROP_3_OF_4</MultiAccumTable>
-                <Resultant>9</Resultant>
+                <Resultant>10</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=9, LED15=27.3 (pre=30,1497.94)
-2, R=9, LED15=27.3
-3, R=9, LED15=27.3
+                        <LampState>1, R=10, LED15=27.3 (pre=30,1497.94)
+2, R=10, LED15=27.3
+3, R=10, LED15=27.3
 4, R=27, LED15=123.0 (pre=30,3105.95)
 5, R=27, LED15=123.0
 6, R=27, LED15=123.0
-7, R=18, LED15=123.0, LED25=58.0 (pre=30,2364.2)
-8, R=18, LED15=123.0, LED25=58.0
-9, R=18, LED15=123.0, LED25=58.0
+7, R=19, LED15=123.0, LED25=58.0 (pre=30,2364.2)
+8, R=19, LED15=123.0, LED25=58.0
+9, R=19, LED15=123.0, LED25=58.0
 10, R=5, LED25=58.0
 11, R=5, LED25=58.0
 12, R=5, LED25=58.0
@@ -3410,15 +3423,15 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
 19, R=5, LED25=58.0
 20, R=5, LED25=58.0
 21, R=5, LED25=58.0
-22, R=13, LED25=261.0 (pre=30,4100.33)
-23, R=13, LED25=261.0
-24, R=13, LED25=261.0
+22, R=14, LED25=261.0 (pre=30,4100.33)
+23, R=14, LED25=261.0
+24, R=14, LED25=261.0
 25, R=12, LED15=27.3 (pre=30,1497.94), LED25=261.0
 26, R=12, LED15=27.3, LED25=261.0
 27, R=12, LED15=27.3, LED25=261.0
-28, R=9, LED15=123.0 (pre=30,3105.95), LED25=261.0
-29, R=9, LED15=123.0, LED25=261.0
-30, R=9, LED15=123.0, LED25=261.0</LampState>
+28, R=10, LED15=123.0 (pre=30,3105.95), LED25=261.0
+29, R=10, LED15=123.0, LED25=261.0
+30, R=10, LED15=123.0, LED25=261.0</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -3428,7 +3441,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>6</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>17</Resultant>
+                <Resultant>18</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -3443,34 +3456,34 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>22</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=18, LED15=27.3 (pre=30,1497.94)
-2, R=18, LED15=27.3
-3, R=18, LED15=27.3
-4, R=12, LED15=553.6 (pre=30,18130.45)
-5, R=12, LED15=553.6
-6, R=12, LED15=553.6
-7, R=8, LED15=553.6, LED25=261.0 (pre=30,6347.74)
-8, R=8, LED15=553.6, LED25=261.0
-9, R=8, LED15=553.6, LED25=261.0
-10, R=25, LED25=261.0
-11, R=25, LED25=261.0
-12, R=25, LED25=261.0
-13, R=25, LED25=261.0
+                        <LampState>1, R=19, LED15=27.3 (pre=30,1497.94)
+2, R=19, LED15=27.3
+3, R=19, LED15=27.3
+4, R=13, LED15=553.6 (pre=30,18130.45)
+5, R=13, LED15=553.6
+6, R=13, LED15=553.6
+7, R=9, LED15=553.6, LED25=261.0 (pre=30,6347.74)
+8, R=9, LED15=553.6, LED25=261.0
+9, R=9, LED15=553.6, LED25=261.0
+10, R=26, LED25=261.0
+11, R=26, LED25=261.0
+12, R=26, LED25=261.0
+13, R=26, LED25=261.0
 14, R=6, LED25=1174.3 (pre=31,38422.05)
 15, R=6, LED25=1174.3
 16, R=6, LED25=1174.3
-17, R=5, LED15=123.0 (pre=30,4499.11), LED25=1174.3
-18, R=5, LED15=123.0, LED25=1174.3
-19, R=5, LED15=123.0, LED25=1174.3
-20, R=4, LED15=553.6 (pre=30,15129.29), LED25=1174.3
-21, R=4, LED15=553.6, LED25=1174.3
-22, R=4, LED15=553.6, LED25=1174.3</LampState>
+17, R=6, LED15=123.0 (pre=30,4499.11), LED25=1174.3
+18, R=6, LED15=123.0, LED25=1174.3
+19, R=6, LED15=123.0, LED25=1174.3
+20, R=5, LED15=553.6 (pre=30,15129.29), LED25=1174.3
+21, R=5, LED15=553.6, LED25=1174.3
+22, R=5, LED15=553.6, LED25=1174.3</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -3714,12 +3727,12 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
-            <ToolData />
+            <ToolData/>
         </PassPlan>
         <PassPlan Number="9">
             <Label>Band 6 HF</Label>
             <TargetSelection>Multiple Fixed Targets</TargetSelection>
-            <ReferenceCoords />
+            <ReferenceCoords></ReferenceCoords>
             <Observation>
                 <Target>NONE</Target>
                 <Sector>NONE</Sector>
@@ -3807,15 +3820,15 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>3</NumberOfExposures>
                 <MultiAccumTable>DROP_10_OF_11</MultiAccumTable>
-                <Resultant>15</Resultant>
+                <Resultant>16</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=15, LED16=6.1 (pre=30,446.98)
-2, R=15, LED16=6.1
-3, R=15, LED16=6.1</LampState>
+                        <LampState>1, R=16, LED16=6.1 (pre=30,446.98)
+2, R=16, LED16=6.1
+3, R=16, LED16=6.1</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -3834,9 +3847,9 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                         <LampState>1, R=26, LED26=12.9 (pre=30,827.4)
 2, R=26, LED26=12.9
 3, R=26, LED26=12.9
-4, R=17, LED16=6.1 (pre=30,446.98), LED26=12.9
-5, R=17, LED16=6.1, LED26=12.9
-6, R=17, LED16=6.1, LED26=12.9</LampState>
+4, R=18, LED16=6.1 (pre=30,446.98), LED26=12.9
+5, R=18, LED16=6.1, LED26=12.9
+6, R=18, LED16=6.1, LED26=12.9</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -3846,7 +3859,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>6</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -3861,30 +3874,30 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>18</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=18, LED16=27.3 (pre=30,1193.3)
-2, R=18, LED16=27.3
-3, R=18, LED16=27.3
+                        <LampState>1, R=19, LED16=27.3 (pre=30,1193.3)
+2, R=19, LED16=27.3
+3, R=19, LED16=27.3
 4, R=13, LED16=27.3, LED26=12.9 (pre=30,827.4)
 5, R=13, LED16=27.3, LED26=12.9
 6, R=13, LED16=27.3, LED26=12.9
-7, R=38, LED26=12.9
-8, R=38, LED26=12.9
-9, R=38, LED26=12.9
+7, R=39, LED26=12.9
+8, R=39, LED26=12.9
+9, R=39, LED26=12.9
 10, R=9, LED26=58.0 (pre=30,1081.66)
 11, R=9, LED26=58.0
 12, R=9, LED26=58.0
-13, R=8, LED16=6.1 (pre=30,446.98), LED26=58.0
-14, R=8, LED16=6.1, LED26=58.0
-15, R=8, LED16=6.1, LED26=58.0
-16, R=6, LED16=27.3 (pre=30,846.21), LED26=58.0
-17, R=6, LED16=27.3, LED26=58.0
-18, R=6, LED16=27.3, LED26=58.0</LampState>
+13, R=9, LED16=6.1 (pre=30,446.98), LED26=58.0
+14, R=9, LED16=6.1, LED26=58.0
+15, R=9, LED16=6.1, LED26=58.0
+16, R=7, LED16=27.3 (pre=30,846.21), LED26=58.0
+17, R=7, LED16=27.3, LED26=58.0
+18, R=7, LED16=27.3, LED26=58.0</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -3976,21 +3989,21 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>30</NumberOfExposures>
                 <MultiAccumTable>DROP_3_OF_4</MultiAccumTable>
-                <Resultant>9</Resultant>
+                <Resultant>10</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=9, LED16=27.3 (pre=30,1193.3)
-2, R=9, LED16=27.3
-3, R=9, LED16=27.3
+                        <LampState>1, R=10, LED16=27.3 (pre=30,1193.3)
+2, R=10, LED16=27.3
+3, R=10, LED16=27.3
 4, R=27, LED16=123.0 (pre=30,2454.15)
 5, R=27, LED16=123.0
 6, R=27, LED16=123.0
-7, R=18, LED16=123.0, LED26=58.0 (pre=30,1809.68)
-8, R=18, LED16=123.0, LED26=58.0
-9, R=18, LED16=123.0, LED26=58.0
+7, R=19, LED16=123.0, LED26=58.0 (pre=30,1809.68)
+8, R=19, LED16=123.0, LED26=58.0
+9, R=19, LED16=123.0, LED26=58.0
 10, R=5, LED26=58.0
 11, R=5, LED26=58.0
 12, R=5, LED26=58.0
@@ -4003,15 +4016,15 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
 19, R=5, LED26=58.0
 20, R=5, LED26=58.0
 21, R=5, LED26=58.0
-22, R=13, LED26=261.0 (pre=30,3980.93)
-23, R=13, LED26=261.0
-24, R=13, LED26=261.0
+22, R=14, LED26=261.0 (pre=30,3980.93)
+23, R=14, LED26=261.0
+24, R=14, LED26=261.0
 25, R=12, LED16=27.3 (pre=30,1193.3), LED26=261.0
 26, R=12, LED16=27.3, LED26=261.0
 27, R=12, LED16=27.3, LED26=261.0
-28, R=9, LED16=123.0 (pre=30,2454.15), LED26=261.0
-29, R=9, LED16=123.0, LED26=261.0
-30, R=9, LED16=123.0, LED26=261.0</LampState>
+28, R=10, LED16=123.0 (pre=30,2454.15), LED26=261.0
+29, R=10, LED16=123.0, LED26=261.0
+30, R=10, LED16=123.0, LED26=261.0</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -4021,7 +4034,7 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>6</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>17</Resultant>
+                <Resultant>18</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
@@ -4036,34 +4049,34 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                 <OpticalElement>DARK</OpticalElement>
                 <NumberOfExposures>22</NumberOfExposures>
                 <MultiAccumTable>DROP_1_OF_2</MultiAccumTable>
-                <Resultant>18</Resultant>
+                <Resultant>19</Resultant>
                 <Dither>NONE</Dither>
                 <SubpixelDither>NONE</SubpixelDither>
                 <SpecialRequirements>
                     <Calibration>
                         <Type>CRNL Direct Illumination</Type>
-                        <LampState>1, R=18, LED16=27.3 (pre=30,1193.3)
-2, R=18, LED16=27.3
-3, R=18, LED16=27.3
-4, R=12, LED16=553.6 (pre=30,14707.5)
-5, R=12, LED16=553.6
-6, R=12, LED16=553.6
-7, R=8, LED16=553.6, LED26=261.0 (pre=30,5691.22)
-8, R=8, LED16=553.6, LED26=261.0
-9, R=8, LED16=553.6, LED26=261.0
-10, R=25, LED26=261.0
-11, R=25, LED26=261.0
-12, R=25, LED26=261.0
-13, R=25, LED26=261.0
+                        <LampState>1, R=19, LED16=27.3 (pre=30,1193.3)
+2, R=19, LED16=27.3
+3, R=19, LED16=27.3
+4, R=13, LED16=553.6 (pre=30,14707.5)
+5, R=13, LED16=553.6
+6, R=13, LED16=553.6
+7, R=9, LED16=553.6, LED26=261.0 (pre=30,5691.22)
+8, R=9, LED16=553.6, LED26=261.0
+9, R=9, LED16=553.6, LED26=261.0
+10, R=26, LED26=261.0
+11, R=26, LED26=261.0
+12, R=26, LED26=261.0
+13, R=26, LED26=261.0
 14, R=6, LED26=1174.3 (pre=30,31741.94)
 15, R=6, LED26=1174.3
 16, R=6, LED26=1174.3
-17, R=5, LED16=123.0 (pre=30,3547.57), LED26=1174.3
-18, R=5, LED16=123.0, LED26=1174.3
-19, R=5, LED16=123.0, LED26=1174.3
-20, R=4, LED16=553.6 (pre=30,12353.84), LED26=1174.3
-21, R=4, LED16=553.6, LED26=1174.3
-22, R=4, LED16=553.6, LED26=1174.3</LampState>
+17, R=6, LED16=123.0 (pre=30,3547.57), LED26=1174.3
+18, R=6, LED16=123.0, LED26=1174.3
+19, R=6, LED16=123.0, LED26=1174.3
+20, R=5, LED16=553.6 (pre=30,12353.84), LED26=1174.3
+21, R=5, LED16=553.6, LED26=1174.3
+22, R=5, LED16=553.6, LED26=1174.3</LampState>
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
@@ -4307,194 +4320,225 @@ It contains pass plans for CFA sequences in all bands, and each band has 3 surve
                     </Calibration>
                 </SpecialRequirements>
             </Observation>
-            <ToolData />
+            <ToolData/>
         </PassPlan>
     </PassPlans>
     <SurveyPlan>
-        <Links />
-        <SurveyPlanStep uid="39dc8315">
+        <Links/>
+        <SurveyPlanStep uid="1bd8db58">
             <PassPlan>1</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="557b7517">
+        <SurveyPlanStep uid="8aa58385">
             <PassPlan>1</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="0718c444">
+        <SurveyPlanStep uid="8477c397">
             <PassPlan>1</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="2f855e26">
+        <SurveyPlanStep uid="6a1a81f9">
             <PassPlan>2</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="de26bbfc">
+        <SurveyPlanStep uid="ed1c477c">
             <PassPlan>2</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="c963e47b">
+        <SurveyPlanStep uid="fdb60939">
             <PassPlan>2</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="5a5ca40f">
+        <SurveyPlanStep uid="6eb07d41">
             <PassPlan>3</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="8af0ce5c">
+        <SurveyPlanStep uid="ae751e66">
             <PassPlan>3</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="74ba06e4">
+        <SurveyPlanStep uid="77488924">
             <PassPlan>3</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="37015ede">
+        <SurveyPlanStep uid="8b10934e">
             <PassPlan>4</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="bbfa2ad1">
+        <SurveyPlanStep uid="278a2530">
             <PassPlan>4</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="93fa0f9a">
+        <SurveyPlanStep uid="d10b382f">
             <PassPlan>4</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="be4f0711">
+        <SurveyPlanStep uid="6d389511">
             <PassPlan>5</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="2e5f18aa">
+        <SurveyPlanStep uid="73055051">
             <PassPlan>5</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="6a2867be">
+        <SurveyPlanStep uid="e8853acc">
             <PassPlan>5</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="ab0f4658">
+        <SurveyPlanStep uid="5ed093b7">
             <PassPlan>6</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="264acedd">
+        <SurveyPlanStep uid="f3a32913">
             <PassPlan>6</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="e900fe4c">
+        <SurveyPlanStep uid="2b8c1abd">
             <PassPlan>6</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="61ea7be7">
+        <SurveyPlanStep uid="02b0da8f">
             <PassPlan>7</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="2263bfa4">
+        <SurveyPlanStep uid="1f7537e2">
             <PassPlan>7</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="19546914">
+        <SurveyPlanStep uid="7f43890f">
             <PassPlan>7</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="61a9dc48">
+        <SurveyPlanStep uid="789ea80c">
             <PassPlan>8</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="dc9a2c5d">
+        <SurveyPlanStep uid="89977687">
             <PassPlan>8</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="fa33a7f0">
+        <SurveyPlanStep uid="45de7c70">
             <PassPlan>8</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="3f4fb104">
+        <SurveyPlanStep uid="2a2f659b">
             <PassPlan>9</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="c05f2378">
+        <SurveyPlanStep uid="888c345c">
             <PassPlan>9</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
-        <SurveyPlanStep uid="f6326b70">
+        <SurveyPlanStep uid="ddceee05">
             <PassPlan>9</PassPlan>
-            <SpecialRequirements />
-            <ToolData />
+            <SpecialRequirements/>
+            <ToolData/>
         </SurveyPlanStep>
     </SurveyPlan>
-    <Activities />
-    <ExecutionPlans />
+    <Activities/>
+    <ExecutionPlans/>
     <Cycles>
-        <CycleInfo CycleNumber="0" StartDate="2026-06-30 00:00:00" EndDate="2027-04-01 00:00:00" Active="true" />
-        <CycleInfo CycleNumber="1" StartDate="2026-11-01 00:00:00" EndDate="2029-04-01 00:00:00" Active="true" />
+        <CycleInfo CycleNumber="0" StartDate="2026-06-30 00:00:00" EndDate="2027-04-01 00:00:00" Active="true"/>
+        <CycleInfo CycleNumber="1" StartDate="2026-11-01 00:00:00" EndDate="2029-04-01 00:00:00" Active="true"/>
     </Cycles>
     <ProgramHistory>
-        <HistoryEntry Date="Sat Jan 18 00:23:15 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1006.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:23:48 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1007.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:24:09 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1008.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:26:03 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1008.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:26:15 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1009.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:26:29 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1010.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:26:44 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1011.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:27:01 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1012.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:27:21 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1013.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:27:30 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1013.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:28:00 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1014.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:28:15 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1015.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:28:51 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1016.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:29:04 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1017.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:29:18 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1018.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:29:37 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1019.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:29:50 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1020.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:30:15 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1021.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:30:27 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1022.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:30:39 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1023.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:30:51 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1024.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:31:04 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1025.apt" />
-        <HistoryEntry Date="Sat Jan 18 00:54:04 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1025.apt" />
-        <HistoryEntry Date="Sat Jan 18 01:16:19 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1025.apt" />
-        <HistoryEntry Date="Sat Jan 18 01:16:24 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1025.apt" />
-        <HistoryEntry Date="Thu Apr 03 15:36:54 GMT 2025" APTVersion="Version 2025.2  JWST PRD: PRDAPTSOC-069-001, Roman PRD: RPRDDEVSOC-018" SchemaVersion="25" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1025.apt" />
-        <HistoryEntry Date="Thu Apr 03 15:37:36 GMT 2025" APTVersion="Version 2025.2  JWST PRD: PRDAPTSOC-069-001, Roman PRD: RPRDDEVSOC-018" SchemaVersion="25" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1025.apt" />
-        <HistoryEntry Date="Thu Apr 03 15:37:37 GMT 2025" APTVersion="Version 2025.2  JWST PRD: PRDAPTSOC-069-001, Roman PRD: RPRDDEVSOC-018" SchemaVersion="25" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1025.apt" />
-        <HistoryEntry Date="Thu Jun 04 14:09:15 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt" />
-        <HistoryEntry Date="Thu Jun 04 14:19:19 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt" />
-        <HistoryEntry Date="Thu Jun 04 14:36:22 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt" />
-        <HistoryEntry Date="Thu Jun 04 14:55:06 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt" />
+        <HistoryEntry Date="Sat Jan 18 00:23:15 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1006.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:23:48 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1007.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:24:09 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1008.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:26:03 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1008.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:26:15 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1009.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:26:29 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1010.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:26:44 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1011.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:27:01 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1012.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:27:21 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1013.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:27:30 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1013.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:28:00 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1014.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:28:15 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1015.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:28:51 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1016.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:29:04 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1017.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:29:18 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1018.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:29:37 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1019.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:29:50 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1020.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:30:15 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1021.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:30:27 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1022.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:30:39 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1023.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:30:51 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1024.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:31:04 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1025.apt"/>
+        <HistoryEntry Date="Sat Jan 18 00:54:04 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1025.apt"/>
+        <HistoryEntry Date="Sat Jan 18 01:16:19 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1025.apt"/>
+        <HistoryEntry Date="Sat Jan 18 01:16:24 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1025.apt"/>
+        <HistoryEntry Date="Thu Apr 03 15:36:54 GMT 2025" APTVersion="Version 2025.2  JWST PRD: PRDAPTSOC-069-001, Roman PRD: RPRDDEVSOC-018" SchemaVersion="25" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1025.apt"/>
+        <HistoryEntry Date="Thu Apr 03 15:37:36 GMT 2025" APTVersion="Version 2025.2  JWST PRD: PRDAPTSOC-069-001, Roman PRD: RPRDDEVSOC-018" SchemaVersion="25" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1025.apt"/>
+        <HistoryEntry Date="Thu Apr 03 15:37:37 GMT 2025" APTVersion="Version 2025.2  JWST PRD: PRDAPTSOC-069-001, Roman PRD: RPRDDEVSOC-018" SchemaVersion="25" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1025.apt"/>
+        <HistoryEntry Date="Thu Jun 04 14:09:15 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt"/>
+        <HistoryEntry Date="Thu Jun 04 14:19:19 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt"/>
+        <HistoryEntry Date="Thu Jun 04 14:36:22 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt"/>
+        <HistoryEntry Date="Thu Jun 04 14:55:06 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt"/>
+        <HistoryEntry Date="Mon Jun 08 19:19:04 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt"/>
+        <HistoryEntry Date="Mon Jun 08 19:21:35 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_seed.apt"/>
+        <HistoryEntry Date="Mon Jun 08 20:09:40 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_all_bands.apt"/>
+        <HistoryEntry Date="Mon Jun 08 20:09:56 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_all_bands.apt"/>
+        <HistoryEntry Date="Mon Jun 08 20:09:57 GMT 2026" APTVersion="Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002" SchemaVersion="29" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/CFA_all_bands.apt"/>
     </ProgramHistory>
     <ToolData>
-        <ToolData Name="Phase2SubmissionData" />
+        <ToolData Name="Phase2SubmissionData">
+            <ToolValue Name="AptVersion">Version 2026.2.1  JWST PRD: PRDAPTSOC-072-002, Roman PRD: PRDDEVRSOC-002</ToolValue>
+            <ToolValue Name="Cycle">0</ToolValue>
+            <ToolValue Name="ErrorText">The list of Investigators does not match the STScI records for this program.
+</ToolValue>
+            <ToolValue Name="HasErrors">true</ToolValue>
+            <ToolValue Name="NotificationAddress">maxime.j.rizzo@nasa.gov</ToolValue>
+            <ToolValue Name="Phase2DiagnosticJustification">Accepted</ToolValue>
+            <ToolValue Name="SubmissionComments">Initial submission with CFA Bands 1-3 (ALL + HF) and Bands 4-6 (HF)</ToolValue>
+            <ToolValue Name="SubmissionCommentsCheckSum">1162007539</ToolValue>
+            <ToolValue Name="SubmissionCounter">1</ToolValue>
+            <ToolValue Name="SubmissionLog">----- Attempting Submission 1 (Mon Jun 08 20:09:56 GMT 2026) -----
+Roman Approved Proposal 1025 successfully submitted.
+Receipt: # 1025-1</ToolValue>
+            <ToolValue Name="SubmissionMode">STScI</ToolValue>
+            <ToolValue Name="SubmissionSuccessCounter">1</ToolValue>
+            <ToolData Name="SystemInformation">
+                <ToolValue Name="Runtime.maxMemory">6000</ToolValue>
+                <ToolValue Name="java.version">21.0.3</ToolValue>
+                <ToolValue Name="linux.distribution">not available</ToolValue>
+                <ToolValue Name="linux.version">not available</ToolValue>
+                <ToolValue Name="os.arch">aarch64</ToolValue>
+                <ToolValue Name="os.name">Mac OS X</ToolValue>
+                <ToolValue Name="os.version">26.3</ToolValue>
+                <ToolValue Name="screens">1728x1117,2560x1440,2560x1440</ToolValue>
+            </ToolData>
+        </ToolData>
         <ToolData Name="SubmissionData">
             <ToolValue Name="AssignedID">00000</ToolValue>
             <ToolValue Name="SubmissionLog">
 Assuming assigned ID: 00000</ToolValue>
         </ToolData>
     </ToolData>
-    <Properties />
+    <Properties/>
 </RomanProgram>

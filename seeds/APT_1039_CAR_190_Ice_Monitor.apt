@@ -1,0 +1,912 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<RomanProgram schemaVersion="31" APTVersion="Version 2026.4  JWST PRD: PRDAPTSOC-073-003, Roman PRD: PRDDEVRSOC-003" xmlns="http://www.stsci.edu/Roman/APT">
+    <ProgramInformation>
+        <ProgramPhase>Approved</ProgramPhase>
+        <Title>CAR-190 RCS Daily Monitor</Title>
+        <Abstract>This is the RCS Daily Ice Monitor test</Abstract>
+        <ProgramID>1039</ProgramID>
+        <StsciEditNumber>0</StsciEditNumber>
+        <ProgramCategory>CAL</ProgramCategory>
+        <ProgramCategorySubtype>WFI</ProgramCategorySubtype>
+        <AllowRestricted>true</AllowRestricted>
+        <IncludesCalibrations>true</IncludesCalibrations>
+        <PureParallelProgram>false</PureParallelProgram>
+        <Cycle>0</Cycle>
+        <ObservingDescription>This takes a single flatfield in every LED band at 1500 e/px/s approximate flux, with the dark element. Bands 4, 5 and 6 are pre-charged.
+
+Before we take these flatfields, we take a long dark to make sure we don't have stray light.</ObservingDescription>
+        <PrincipalInvestigator>
+            <InvestigatorAddress>
+                <UniqueID>43054</UniqueID>
+                <Country>USA</Country>
+                <Institution>NASA Goddard Space Flight Center</Institution>
+                <USState>MD</USState>
+                <ESAMember>false</ESAMember>
+                <CSAMember>false</CSAMember>
+                <FirstName>Eric</FirstName>
+                <LastName>Switzer</LastName>
+                <Retired>false</Retired>
+            </InvestigatorAddress>
+            <Contact>true</Contact>
+        </PrincipalInvestigator>
+        <CoInvestigator>
+            <CoPI>false</CoPI>
+            <InvestigatorAddress>
+                <UniqueID>24856</UniqueID>
+                <Country>USA</Country>
+                <Institution>NASA Goddard Space Flight Center</Institution>
+                <USState>MD</USState>
+                <ESAMember>false</ESAMember>
+                <CSAMember>false</CSAMember>
+                <FirstName>Maxime</FirstName>
+                <Honorific>Dr.</Honorific>
+                <LastName>Rizzo</LastName>
+                <Retired>false</Retired>
+            </InvestigatorAddress>
+            <AdminUSPI>false</AdminUSPI>
+            <Contact>false</Contact>
+        </CoInvestigator>
+        <CoInvestigator>
+            <CoPI>false</CoPI>
+            <InvestigatorAddress>
+                <UniqueID>13217</UniqueID>
+                <Country>USA</Country>
+                <Institution>NASA Goddard Space Flight Center</Institution>
+                <USState>MD</USState>
+                <ESAMember>false</ESAMember>
+                <CSAMember>false</CSAMember>
+                <FirstName>Joshua</FirstName>
+                <Honorific>Dr.</Honorific>
+                <LastName>Schlieder</LastName>
+                <Retired>false</Retired>
+            </InvestigatorAddress>
+            <AdminUSPI>false</AdminUSPI>
+            <Contact>false</Contact>
+        </CoInvestigator>
+    </ProgramInformation>
+    <Targets/>
+    <MosaicPatterns/>
+    <PassPlans>
+        <PassPlan Number="1">
+            <Label>Ice Monitor Side A</Label>
+            <TargetSelection>Multiple Fixed Targets</TargetSelection>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <MultiAccumTable>DROP_4_OF_5</MultiAccumTable>
+                <Resultant>13</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Dark Imaging</Type>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, LED21=1500</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, LED22=1500</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, LED23=1500</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, LED24=1500 (pre=67,44699.5)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, LED25=1500 (pre=54,39937.5)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, LED26=1500 (pre=36,38133.4)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <ToolData/>
+        </PassPlan>
+        <PassPlan Number="2">
+            <Label>Ice Monitor Side B</Label>
+            <TargetSelection>Multiple Fixed Targets</TargetSelection>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <MultiAccumTable>DROP_4_OF_5</MultiAccumTable>
+                <Resultant>13</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Dark Imaging</Type>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, LED21=1500</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, LED22=1500</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, LED23=1500</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, LED24=1500 (pre=62,52574.5)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, LED25=1500 (pre=40,47548.3)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <Observation>
+                <Target>NONE</Target>
+                <Sector>NONE</Sector>
+                <OpticalElement>DARK</OpticalElement>
+                <NumberOfExposures>1</NumberOfExposures>
+                <MultiAccumTable>DROP_2_OF_3</MultiAccumTable>
+                <Resultant>6</Resultant>
+                <Dither>NONE</Dither>
+                <SubpixelDither>NONE</SubpixelDither>
+                <SpecialRequirements>
+                    <Calibration>
+                        <Type>Internal Flat</Type>
+                        <LampState>1, LED26=1500 (pre=33,46371.2)</LampState>
+                    </Calibration>
+                </SpecialRequirements>
+            </Observation>
+            <ToolData/>
+        </PassPlan>
+    </PassPlans>
+    <SurveyPlan>
+        <Links/>
+        <SurveyPlanStep uid="652c7dc8">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="d9ca7f7a">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="c369ea25">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="f3ec1549">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="86cf3a5c">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="81fe298b">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="f8a8caf8">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="b4289eb7">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="d3dbbfd4">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="995b55b1">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="427ac67f">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="1e1494b7">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="d1ec9dbf">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="8afd7c14">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="5e8917b3">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="d83ccb96">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="87feb014">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="9a5869bc">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="366bcc73">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="5e106186">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="63fe7349">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="ac6f86bd">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="722959b6">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="4a50e065">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="3fd87a67">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="42d1f193">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="91bf0d67">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="eefd3f17">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="4c21d465">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="2ea87b35">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="2847442e">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="2f15437e">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="d8cdac4c">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="b7207b92">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="d937dd78">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="6b1191f2">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="6b58ad47">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="ca2fc86c">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="b7a8f41a">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="79ce28a1">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="4c2717b9">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="882e1efc">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="d6e414ba">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="9ac0de6c">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="79cd4a57">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="d66d52b7">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="e8879d66">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="bbaa3984">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="87b24461">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="d5d570c5">
+            <PassPlan>1</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="4f2f2af6">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="4f631ad0">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="d4b16eee">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="6721d639">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="bf8321c9">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="23b5838d">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="cf9559c5">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="c9532c77">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="5d248699">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="2cc68b8a">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="cc7779c4">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="996f6eb6">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="7fea77e6">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="101f3b6e">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="e466a9ae">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="ea409f91">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="39adb899">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="d99744f6">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="14c44f2e">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="58ce49f9">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="6c98d21f">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="2eb07aa5">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="6c6015d9">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="a6d58a81">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="b742f8d3">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="c1a2abde">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="9414259f">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="eb10d524">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="6f4f39f3">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="cd77f888">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="513c5905">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="fcec8347">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="b76660ab">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="79c67785">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="f57c6a4a">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="3b10f24c">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="526b3f91">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="ac646a44">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="b876c964">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="b8d197d5">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="25bfbb8a">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="7dfa8c41">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="b73d1a18">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="8c358a86">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="a63ad06b">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="a55478fb">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="6747aa29">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="367a1375">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="f823ddcb">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="e57425d0">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="c9f87618">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="9c15f6ac">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="57af6a30">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="e996fd1b">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="558e4a85">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="1b19b9c8">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="86232cc5">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="571d366f">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="b7bb82b2">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+        <SurveyPlanStep uid="ed1418db">
+            <PassPlan>2</PassPlan>
+            <SpecialRequirements/>
+            <ToolData/>
+        </SurveyPlanStep>
+    </SurveyPlan>
+    <Activities/>
+    <ExecutionPlans/>
+    <Cycles>
+        <CycleInfo CycleNumber="0" StartDate="2026-06-30 00:00:00" EndDate="2027-04-01 00:00:00" Active="true"/>
+        <CycleInfo CycleNumber="1" StartDate="2026-11-01 00:00:00" EndDate="2029-04-01 00:00:00" Active="true"/>
+    </Cycles>
+    <ProgramHistory>
+        <HistoryEntry Date="Tue Feb 25 19:50:26 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Draft" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1028.apt"/>
+        <HistoryEntry Date="Tue Feb 25 19:51:00 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1028.apt"/>
+        <HistoryEntry Date="Tue Feb 25 19:51:24 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1029.apt"/>
+        <HistoryEntry Date="Tue Feb 25 19:51:41 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1030.apt"/>
+        <HistoryEntry Date="Tue Feb 25 19:51:55 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1031.apt"/>
+        <HistoryEntry Date="Tue Feb 25 22:12:17 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1038.apt"/>
+        <HistoryEntry Date="Tue Feb 25 22:17:03 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1038.apt"/>
+        <HistoryEntry Date="Tue Feb 25 22:17:08 GMT 2025" APTVersion="Version 2024.8  JWST PRD: PRDAPTSOC-067-002, Roman PRD: RPRDDEVSOC-017" SchemaVersion="24" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - x86_64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman-work/1038.apt"/>
+        <HistoryEntry Date="Fri Nov 07 21:23:23 GMT 2025" APTVersion="Version 2025.6.2  JWST PRD: PRDAPTSOC-071-002, Roman PRD: RPRDDEVSOC-022" SchemaVersion="28" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - aarch64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1039.apt"/>
+        <HistoryEntry Date="Fri Nov 07 21:24:33 GMT 2025" APTVersion="Version 2025.6.2  JWST PRD: PRDAPTSOC-071-002, Roman PRD: RPRDDEVSOC-022" SchemaVersion="28" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - aarch64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1039.apt"/>
+        <HistoryEntry Date="Fri Nov 07 21:24:39 GMT 2025" APTVersion="Version 2025.6.2  JWST PRD: PRDAPTSOC-071-002, Roman PRD: RPRDDEVSOC-022" SchemaVersion="28" ProgramPhase="Approved" User="cmannfolk" Platform="Mac OS X - aarch64" FileLocation="/System/Volumes/Data/solaris/user1/cmannfolk/roman/1039.apt"/>
+        <HistoryEntry Date="Tue Feb 03 16:41:48 GMT 2026" APTVersion="Version 2025.8  JWST PRD: PRDAPTSOC-072-002, Roman PRD: RPRDDEVSOC-023" SchemaVersion="28" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Commissioning/APT_1039_CAR_190_Ice_Monitor.apt"/>
+        <HistoryEntry Date="Tue Jun 16 17:38:48 GMT 2026" APTVersion="Version 2026.4  JWST PRD: PRDAPTSOC-073-003, Roman PRD: PRDDEVRSOC-003" SchemaVersion="31" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/APT_1039_CAR_190_Ice_Monitor.apt"/>
+        <HistoryEntry Date="Tue Jun 16 17:43:29 GMT 2026" APTVersion="Version 2026.4  JWST PRD: PRDAPTSOC-073-003, Roman PRD: PRDDEVRSOC-003" SchemaVersion="31" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/APT_1039_CAR_190_Ice_Monitor.apt"/>
+        <HistoryEntry Date="Tue Jun 16 17:43:29 GMT 2026" APTVersion="Version 2026.4  JWST PRD: PRDAPTSOC-073-003, Roman PRD: PRDDEVRSOC-003" SchemaVersion="31" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/APT_1039_CAR_190_Ice_Monitor.apt"/>
+        <HistoryEntry Date="Tue Jun 16 17:43:30 GMT 2026" APTVersion="Version 2026.4  JWST PRD: PRDAPTSOC-073-003, Roman PRD: PRDDEVRSOC-003" SchemaVersion="31" ProgramPhase="Approved" User="mrizzo" Platform="Mac OS X - aarch64" FileLocation="/Users/mrizzo/Library/CloudStorage/Box-Box/WFI/Data_Analysis/roman-apt-editor/APT_1039_CAR_190_Ice_Monitor.apt"/>
+    </ProgramHistory>
+    <ToolData>
+        <ToolData Name="Phase2SubmissionData">
+            <ToolValue Name="AptVersion">Version 2026.4  JWST PRD: PRDAPTSOC-073-003, Roman PRD: PRDDEVRSOC-003</ToolValue>
+            <ToolValue Name="Cycle">0</ToolValue>
+            <ToolValue Name="ErrorText"></ToolValue>
+            <ToolValue Name="HasErrors">false</ToolValue>
+            <ToolValue Name="NotificationAddress">maxime.j.rizzo@nasa.gov</ToolValue>
+            <ToolValue Name="Phase2DiagnosticJustification"></ToolValue>
+            <ToolValue Name="SubmissionComments">Initial submission</ToolValue>
+            <ToolValue Name="SubmissionCommentsCheckSum">1446151624</ToolValue>
+            <ToolValue Name="SubmissionCounter">1</ToolValue>
+            <ToolValue Name="SubmissionLog">----- Attempting Submission 1 (Tue Jun 16 17:43:29 GMT 2026) -----
+Roman Approved Proposal 1039 successfully submitted.
+Receipt: # 1039-1</ToolValue>
+            <ToolValue Name="SubmissionMode">STScI</ToolValue>
+            <ToolValue Name="SubmissionSuccessCounter">1</ToolValue>
+            <ToolData Name="SystemInformation">
+                <ToolValue Name="Runtime.maxMemory">6000</ToolValue>
+                <ToolValue Name="java.version">21.0.3</ToolValue>
+                <ToolValue Name="linux.distribution">not available</ToolValue>
+                <ToolValue Name="linux.version">not available</ToolValue>
+                <ToolValue Name="os.arch">aarch64</ToolValue>
+                <ToolValue Name="os.name">Mac OS X</ToolValue>
+                <ToolValue Name="os.version">26.3</ToolValue>
+                <ToolValue Name="screens">1728x1117,2560x1440,2560x1440</ToolValue>
+            </ToolData>
+        </ToolData>
+        <ToolData Name="SubmissionData">
+            <ToolValue Name="AssignedID">00000</ToolValue>
+            <ToolValue Name="SubmissionLog">
+Assuming assigned ID: 00000</ToolValue>
+        </ToolData>
+    </ToolData>
+    <Properties/>
+</RomanProgram>
