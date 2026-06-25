@@ -60,12 +60,12 @@ tools/              Core APT population and diagnostic scripts
 seeds/              Seed APT template files (.apt)
 examples/           Example inputs and outputs
   ├── cfa/          CFA example data and outputs
+  │   └── data/     CFA CSV diagnostic files
   ├── lolo/         LOLO example data and outputs
   └── tuning/       Tuning example data and outputs
 reference/          Documentation and reference data
   ├── ma_table_ref_revG.yaml        Multi-accumulate table reference
   └── sRCS_precharge_explainer.html Precharge calculation explanation
-data/               CSV diagnostic and test files
 notebooks/          Jupyter notebooks for analysis and exploration
 helpers/            Experimental utilities (not maintained)
 backups/            APT backup files (.aptbackup)
