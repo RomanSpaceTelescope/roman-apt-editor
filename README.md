@@ -21,11 +21,11 @@ Populate a Roman APT seed XML for LOLO (lamp-on-lamp-off) observations with targ
 python tools/populate_lolo_apt.py --seed seeds/LOLO_seed.apt --input lolo_data.csv --out lolo.apt
 ```
 
-### generate_gopup.py
-Generate a Roman WFI OPUP (Observation Plan Upload Package) as a `.tgz` tarball from flat and dark sequences (CFA, tuning). Merges rows by VISIT_NUMBER and generates OPS/VST files with proper directory structure. **Note:** Use APT files directly for LOLO observations.
+### generate_darkcal_gopup.py
+Generate a Roman WFI OPUP (Observation Plan Upload Package) as a `.tgz` tarball from dark/cal sequences (CFA, flat, dark). Merges rows by VISIT_NUMBER and generates OPS/VST files with proper directory structure. **Note:** Use APT files directly for LOLO observations.
 
 ```bash
-python tools/generate_gopup.py --csv examples/cfa/data.csv --opup_name 2026334010112_2026169141359 \
+python tools/generate_darkcal_gopup.py --csv examples/cfa/data.csv --opup_name 2026334010112_2026169141359 \
   --prog 123 --exec 1 --pass_num 1 --seg 1
 ```
 

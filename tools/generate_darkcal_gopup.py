@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 """
-generate_gopup.py
+generate_darkcal_gopup.py
 
-Generate a Roman WFI OPUP (Observation Plan Upload Package) from a CFA or
-LOLO-style CSV spreadsheet.
+Generate a Roman WFI OPUP (Observation Plan Upload Package) from dark/cal
+(CFA, flat, dark) CSV sequences.
 
 Rows sharing the same VISIT_NUMBER are merged into a single .vst file with
 LED changes interleaved inside GROUP 03.
@@ -17,7 +17,7 @@ Output structure:
           └── V{visit_id}.vst   (one per unique VISIT_NUMBER)
 
 Usage:
-  python generate_gopup.py --csv Band5hf_CFA.csv \\
+  python generate_darkcal_gopup.py --csv Band5hf_CFA.csv \\
       --opup_name 2026334010112_2026169141359 \\
       --prog 123 --exec 1 --pass_num 1 --seg 1 \\
       [--ma_yaml path/to/ma_table_ref_revG.yaml] \\
